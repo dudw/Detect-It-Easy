@@ -5048,12 +5048,15 @@ function scanForLanguagesAndCompilers_NET_and_Native() {
         minorLinkerVersion = PE.getMinorLinkerVersion();
 
     if (!isCompilerDetected() && !isLinkerDetected() && !PE.isNet()) {
+        var ehFrameSection = PE.section[".eh_frame"],
+            buildIdSection = PE.section[".build-id"];
 
-        if (PE.isRichSignaturePresent() ||
+        if (!ehFrameSection && !buildIdSection && (
+            PE.isRichSignaturePresent() ||
             PE.compare("'MZ'90000300000004000000FFFF0000B800000000000000400000000000000000000000000000000000000000000000000000000000000000000000....00000E1FBA0E00B409CD21B8014CCD21'This program cannot be run in DOS mode.\r\r\n$'00000000") ||
             PE.compare("'MZ'90000300000004000000FFFF0000B800000000000000400000000000000000000000000000000000000000000000000000000000000000000000....000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000") ||
-            PE.isSectionNamePresent(".00cfg")) {
-
+            PE.isSectionNamePresent(".00cfg")
+        )) {
             if (PE.isSectionNamePresent(".gfids") || PE.isSectionNamePresent(".giats") || PE.isSectionNamePresent(".gljmp")) {
                 _setResult("~tool", "Microsoft Visual Studio", String(), String())
             }
@@ -5068,8 +5071,11 @@ function scanForLanguagesAndCompilers_NET_and_Native() {
                     _setLangByHeur("C/C++");
                 }
             }
-        } else if (PE.isSectionNamePresent(".CRT") && PE.isSectionNamePresent(".rdata") && PE.isSectionNamePresent(".xdata") && PE.isSectionNamePresent(".idata") &&
-            (PE.isSectionNamePresent(".tls") || PE.isSectionNamePresent(".bss")) || PE.isSectionNamePresent(".buildid") || PE.isSectionNamePresent(".build-id")) {
+        } else if (
+            ehFrameSection || buildIdSection || (
+                PE.isSectionNamePresent(".CRT") && PE.isSectionNamePresent(".rdata") && PE.isSectionNamePresent(".xdata") && PE.isSectionNamePresent(".idata") &&
+                (PE.isSectionNamePresent(".tls") || PE.isSectionNamePresent(".bss")) || PE.isSectionNamePresent(".buildid")
+            )) {
 
             _setResult("~compiler", "MinGW", String(), String());
 
@@ -5430,6 +5436,24 @@ function scanForMaliciousCode_NET_and_Native() {
         }
 
 
+        if (verdicts.length === 0 && PE.getNetModuleName() === "Kheir.exe") {
+            verdicts.push({
+                type: "jnRAT",
+                version: String(),
+                details: String()
+            });
+        }
+
+
+        if (verdicts.length === 0 && (PE.getNetModuleName() === "Client.exe" && PE.isNetObjectPresent("fusion"))) {
+            verdicts.push({
+                type: "DarkRAT",
+                version: String(),
+                details: String()
+            });
+        }
+
+
         if (verdicts.length === 0 && PE.isNetObjectPresent("tosuck")) {
             verdicts.push({
                 type: "ICARUS Evil Worm RAT",
@@ -5442,6 +5466,24 @@ function scanForMaliciousCode_NET_and_Native() {
         if (verdicts.length === 0 && PE.isNetObjectPresent("isVM_by_wim_temper")) {
             verdicts.push({
                 type: "NonEuclid RAT",
+                version: String(),
+                details: String()
+            });
+        }
+
+
+        if (verdicts.length === 0 && PE.isNetObjectPresent("Orcus.Shared")) {
+            verdicts.push({
+                type: "Orcus RAT",
+                version: "1.3-1.9.1",
+                details: String()
+            });
+        }
+
+
+        if (verdicts.length === 0 && PE.isNetObjectPresent("LZLoader") && PE.isNetObjectPresent("Injector")) {
+            verdicts.push({
+                type: "Imminent Monitor RAT",
                 version: String(),
                 details: String()
             });
@@ -5564,6 +5606,43 @@ function scanForMaliciousCode_NET_and_Native() {
     )) {
         verdicts.push({
             type: "BitRAT",
+            version: String(),
+            details: String()
+        });
+    }
+
+
+
+
+    if (PE.getNumberOfImports() === 2 && // MPRESS packed
+        PE.isImportPositionHashPresent(0, 0x174efb84) &&
+        PE.isImportPositionHashPresent(1, 0x381488f1)
+    ) {
+        verdicts.push({
+            type: "Qatar RAT",
+            version: "1.2",
+            details: String()
+        });
+    }
+
+
+
+
+    if ((PE.isImportPositionHashPresent(0, 0x991f7f9a) && PE.isImportPositionHashPresent(1, 0x3495fca1)) ||
+        (PE.isImportPositionHashPresent(0, 0x7d78c0f9) && PE.isImportPositionHashPresent(1, 0x4b76cb0f))) {
+        verdicts.push({
+            type: "Furax RAT",
+            version: String(),
+            details: String()
+        });
+    }
+
+
+
+
+    if ((PE.isImportPositionHashPresent(0, 0x42600eef) && PE.isSignatureInSectionPresent(0, "'Octopus'"))) {
+        verdicts.push({
+            type: "Octopus RAT",
             version: String(),
             details: String()
         });
