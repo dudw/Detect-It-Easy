@@ -3,7 +3,7 @@
 meta("compiler", "Zig");
 
 function detect() {
-    if ((ELF.isSectionNamePresent(".rodata")) && (ELF.isDeepScan())) {
+    if (ELF.isSectionNamePresent(".rodata") && ELF.isDeepScan()) {
         var nIndex = ELF.getSectionNumber(".rodata");
 
         var nOffset = ELF.getSectionFileOffset(nIndex);

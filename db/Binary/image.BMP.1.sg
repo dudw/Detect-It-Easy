@@ -8,9 +8,15 @@ function detect() {
         if (Binary.compare("'BM'")) {
             if (Binary.getSize() >= Binary.readDword(2)) {
                 switch (Binary.readDword(14)) {
-                    case 40: sVersion = "3"; break;
-                    case 108: sVersion = "4"; break;
-                    case 124: sVersion = "5"; break;
+                    case 40:
+                        sVersion = "3";
+                        break;
+                    case 108:
+                        sVersion = "4";
+                        break;
+                    case 124:
+                        sVersion = "5";
+                        break;
                 }
                 if (sVersion) {
                     switch (Binary.readDword(0x1e)) {
@@ -30,8 +36,7 @@ function detect() {
                         nHeight = -nHeight;
                         sOptions = sOptions.append("top-down");
                     }
-                    sOptions = sOptions.append(Binary.readDword(0x12) + "x" + nHeight,
-                        Binary.readWord(0x1c) + "bpp");
+                    sOptions = sOptions.append(Binary.readDword(0x12) + "x" + nHeight, Binary.readWord(0x1c) + "bpp");
                 }
                 bDetected = true;
             }

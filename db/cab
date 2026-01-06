@@ -13,12 +13,12 @@ function detect_Cab(nOffset, nSize) {
             bDetected = true;
             sVersion = File.readByte(nOffset + 0x19) + ".0" + File.readByte(nOffset + 0x18);
             var nFilesOffset = nOffset + File.readDword(nOffset + 0x10);
-            var nFiles = File.readWord(nOffset + 0x1C);
+            var nFiles = File.readWord(nOffset + 0x1c);
             var nPacked = File.readDword(nOffset + 8);
-            if (File.readByte(nOffset + 0x1E) & 4) {
+            if (File.readByte(nOffset + 0x1e) & 4) {
                 nOffset += File.readDword(nOffset + 0x24) + 4;
             }
-            switch (File.readByte(nOffset + 0x2A) & 15) {
+            switch (File.readByte(nOffset + 0x2a) & 15) {
                 case 1:
                     sOptions = sOptions.append("MSZip");
                     break;
@@ -33,8 +33,7 @@ function detect_Cab(nOffset, nSize) {
             // folder's data is first and just skip the names.
             nPacked -= File.readDword(nOffset + 0x24);
             while (nFiles--) {
-                Archive.add(File.readDword(nFilesOffset), nPacked,
-                    File.readByte(nFilesOffset + 14) & 16);
+                Archive.add(File.readDword(nFilesOffset), nPacked, File.readByte(nFilesOffset + 14) & 16);
                 nFilesOffset = File.findByte(nFilesOffset + 16, 256, 0) + 1;
                 nPacked = 0;
             }

@@ -21,7 +21,7 @@ function detect() {
             var nVerPos = sAppId.indexOf("UltraISO");
             if (nVerPos !== -1) {
                 var sVersionPart = sAppId.substring(nVerPos + 9).trim();
-                if (sVersionPart.charAt(0) === 'V') {
+                if (sVersionPart.charAt(0) === "V") {
                     var nSpacePos = sVersionPart.indexOf(" ");
                     if (nSpacePos !== -1) {
                         sVersion = sVersionPart.substring(1, nSpacePos);

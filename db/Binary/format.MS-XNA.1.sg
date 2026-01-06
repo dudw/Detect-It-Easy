@@ -6,10 +6,9 @@ meta("format", "");
 
 function detect() {
     if (Binary.getSize() >= 9) {
-
         if (Binary.compare("'XNB'")) {
             bDetected = true;
-            sName = "Microsoft XNA Game Studio Binary Package (.XNB)"
+            sName = "Microsoft XNA Game Studio Binary Package (.XNB)";
             var nXNA_Ver = Binary.read_uint8(0x4);
             var fFlag = Binary.read_uint8(0x5);
             switch (nXNA_Ver) {
@@ -26,7 +25,6 @@ function detect() {
                     bDetected = false;
             }
 
-
             /* XNA Studio platforms: 'w' = Windows, 'm' = Windows Phone 7, 'x' = X360
              * MonoGame extensions: 'i' = iOS, 'a' = Android, 'X' = MacOSX, 'P' = PS4, 'S' = Switch, etc */
             switch (Binary.read_uint8(0x3)) {
@@ -36,7 +34,7 @@ function detect() {
                 case 0x78:
                     sOption("Xbox 360");
                     break;
-                case 0x6D:
+                case 0x6d:
                     sOption("Windows Phone 7");
                     break;
                 case 0x69:
@@ -56,23 +54,29 @@ function detect() {
                     break;
                 default:
                     sOption("UNKNOWN");
-                    //    bDetected=false;
+                //    bDetected=false;
             }
 
             if (Binary.isVerbose()) {
-                if ((fFlag & 0x01) >> 0) { sOption("hiDef") };
-                if ((fFlag & 0x80) >> 2) { sOption("compressed") };
-                if (!Binary.getSize() == Binary.read_uint32(0x5)) { sOption("wrong size!") };
+                if ((fFlag & 0x01) >> 0) {
+                    sOption("hiDef");
+                }
+                if ((fFlag & 0x80) >> 2) {
+                    sOption("compressed");
+                }
+                if (!Binary.getSize() == Binary.read_uint32(0x5)) {
+                    sOption("wrong size!");
+                }
             }
         } else if (Binary.compare("'WBND'")) {
             bDetected = true;
-            sName = "Microsoft XACT Wave Bank (.XWB)"
+            sName = "Microsoft XACT Wave Bank (.XWB)";
         } else if (Binary.compare("'SDBK'")) {
             bDetected = true;
-            sName = "Microsoft XACT Sound Bank (.XSB)"
+            sName = "Microsoft XACT Sound Bank (.XSB)";
         } else if (Binary.compare("'XGSF'")) {
             bDetected = true;
-            sName = "Microsoft XACT Global Settings File (.XGS)"
+            sName = "Microsoft XACT Global Settings File (.XGS)";
         }
     }
 

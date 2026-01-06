@@ -70,14 +70,17 @@ function detect_Zip(bFile) {
             if (v > nVer) {
                 nVer = v;
             }
-            if (!bEncrypted && (File.readByte(nOffset + 6) & 1)) {
+            if (!bEncrypted && File.readByte(nOffset + 6) & 1) {
                 bEncrypted = 1;
             }
             var nPacked = File.readDword(nOffset + 0x12);
-            var nName = File.readWord(nOffset + 0x1A);
-            Archive.add(File.readDword(nOffset + 0x16), nPacked,
-                nPacked == 0 && File.readByte(nOffset + 0x1E + nName - 1) == 0x2F);
-            nOffset += 0x1E + nName + File.readWord(nOffset + 0x1C) + nPacked;
+            var nName = File.readWord(nOffset + 0x1a);
+            Archive.add(
+                File.readDword(nOffset + 0x16),
+                nPacked,
+                nPacked == 0 && File.readByte(nOffset + 0x1e + nName - 1) == 0x2f
+            );
+            nOffset += 0x1e + nName + File.readWord(nOffset + 0x1c) + nPacked;
         } while (File.compare("'PK'0304", nOffset));
 
         if (bEncrypted) {

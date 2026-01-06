@@ -4,11 +4,12 @@
 meta("compiler", "Go");
 
 function detect() {
-
-    if (ELF.isSectionNamePresent(".gosymtab") ||
+    if (
+        ELF.isSectionNamePresent(".gosymtab") ||
         ELF.isSectionNamePresent(".gopclntab") ||
         ELF.isSectionNamePresent(".go.buildinfo") ||
-        ELF.isSectionNamePresent(".note.go.buildid")) {
+        ELF.isSectionNamePresent(".note.go.buildid")
+    ) {
         bDetected = true;
     }
 
@@ -109,8 +110,7 @@ function detect() {
     } else if (ELF.compareEP("83ec088b4424088d5c240c890424895c2404e809000000cd03cccccccccccccc")) {
         bDetected = true;
         sVersion = "1.6.X-1.9.X";
-    }
-    else if (ELF.compareEP("e9....ffffccccccccccccccccccccccb8fc0000008b5c2404cd80cd03c3cccc")) {
+    } else if (ELF.compareEP("e9....ffffccccccccccccccccccccccb8fc0000008b5c2404cd80cd03c3cccc")) {
         bDetected = true;
         sVersion = "1.10";
     } else if (ELF.compareEP("e9ebd8ffffccccccccccccccccccccccb8fc0000008b5c2404cd80cd03c3cccc")) {
@@ -141,7 +141,7 @@ function detect() {
         bDetected = true;
         sVersion = "1.23.X-1.24.X";
     }
-/*
+    /*
     // generic rule for amd64 and 386
     else if (ELF.compareEP("e9....ffff..................................................cccc")) {
         bDetected = true;

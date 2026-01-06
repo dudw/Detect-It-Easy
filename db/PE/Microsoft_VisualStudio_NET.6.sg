@@ -8,7 +8,13 @@
 meta("tool", "Microsoft Visual Studio");
 
 function detect() {
-    if (PE.isNet() && PE.isSignatureInSectionPresent(0, "590100'KMicrosoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator'")) {
+    if (
+        PE.isNet() &&
+        PE.isSignatureInSectionPresent(
+            0,
+            "590100'KMicrosoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator'"
+        )
+    ) {
         bDetected = true;
     }
 

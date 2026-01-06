@@ -5,10 +5,14 @@ meta("compiler", "Delphi");
 function detect() {
     var nSection = MACH.getSectionNumber("__rodata");
     if (nSection != -1) {
-        var nOffset = MACH.findSignature(ACH.getSectionFileOffset(nSection), MACH.getSectionFileSize(nSection), "'TObject'");
+        var nOffset = MACH.findSignature(
+            ACH.getSectionFileOffset(nSection),
+            MACH.getSectionFileSize(nSection),
+            "'TObject'"
+        );
         if (nOffset != -1) {
             sName = "Embarcadero Delphi";
-            sVersion = "XE2-XE6"
+            sVersion = "XE2-XE6";
             bDetected = true;
         }
     }

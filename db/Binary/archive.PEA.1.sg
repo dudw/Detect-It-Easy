@@ -5,10 +5,10 @@ meta("archive", "");
 
 function detect() {
     if (Binary.getSize() >= 10) {
-        if (Binary.compare("EA") && Binary.compare("0000'POD'00", 0x0A)) {
+        if (Binary.compare("EA") && Binary.compare("0000'POD'00", 0x0a)) {
             bDetected = true;
             sName = "PeaZip Archive (.PEA)";
-            sVersion = "v" + Binary.read_uint8(0x01) + "." + Binary.read_uint8(0x02)
+            sVersion = "v" + Binary.read_uint8(0x01) + "." + Binary.read_uint8(0x02);
 
             if (bDetected && Binary.isVerbose()) {
                 switch (Binary.read_uint8(0x3)) {

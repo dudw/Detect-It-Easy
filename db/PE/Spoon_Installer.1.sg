@@ -14,7 +14,7 @@ function detect() {
             bDetected = true;
         }
 
-        if (PE.getAddressOfEntryPoint() == 0x0040C36E) {
+        if (PE.getAddressOfEntryPoint() == 0x0040c36e) {
             sVersion = "11 2005";
         }
     }

@@ -4,9 +4,17 @@
 meta("compiler", "Microsoft Quick Basic");
 
 function detect() {
-    if (MSDOS.compareEP("1e071e2e8e1e....b430cd2150812e........8b36....ad91ade3..3d....72..3d....73..ba....eb..0bc075..c706........c706........33c99a")) {
+    if (
+        MSDOS.compareEP(
+            "1e071e2e8e1e....b430cd2150812e........8b36....ad91ade3..3d....72..3d....73..ba....eb..0bc075..c706........c706........33c99a"
+        )
+    ) {
         bDetected = true;
-    } else if (MSDOS.compareEP("e9$$$$8cda83c2..8edaa1....0e1ffc3d....74..e9....b430cd213c..73..e9$$$$ba....0e1fb409cd21b8....cd21")) {
+    } else if (
+        MSDOS.compareEP(
+            "e9$$$$8cda83c2..8edaa1....0e1ffc3d....74..e9....b430cd213c..73..e9$$$$ba....0e1fb409cd21b8....cd21"
+        )
+    ) {
         sVersion = "2.0";
         bDetected = true;
     } else if (MSDOS.compareEP("9a########591fa1....1e510e1ffc")) {

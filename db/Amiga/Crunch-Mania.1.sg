@@ -32,7 +32,11 @@ function detect() {
         sVersion = "1.9t-1.91";
         sOptions = "Address/Huffman";
         bDetected = true;
-    } else if (Amiga.compareEP("48e77fff33fc............33fc............33fc............33fc............45fa....49f9........204c")) {
+    } else if (
+        Amiga.compareEP(
+            "48e77fff33fc............33fc............33fc............33fc............45fa....49f9........204c"
+        )
+    ) {
         sVersion = "1.9t-1.91";
         sOptions = "Address/Pro";
         bDetected = true;

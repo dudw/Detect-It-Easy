@@ -9,11 +9,13 @@ function detect() {
         sVersion = "Adi2/Adibou1/Playtoons/Woodruff";
         sOptions = "Video+Sound";
         bDetected = true;
-    } else if (Binary.compare("2e0300000700a4030000000040018800011002003003000069763332")) { // 69763332 = iv32
+    } else if (Binary.compare("2e0300000700a4030000000040018800011002003003000069763332")) {
+        // 69763332 = iv32
         sOptions = "Indeo 3 (compressed)";
         sVersion = "3.24.01.01";
         bDetected = true;
-    } else if (Binary.compare("2e0302000700........00004001f000000001003003000049563332")) { // 49563332 = IV32
+    } else if (Binary.compare("2e0302000700........00004001f000000001003003000049563332")) {
+        // 49563332 = IV32
         sOptions = "Indeo 3 (compressed)";
         sVersion = "3.24.15.03";
         bDetected = true;

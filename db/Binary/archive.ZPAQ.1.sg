@@ -6,7 +6,7 @@ meta("archive", "ZPAQ Compressed Archive (.ZPAQ)");
 
 function detect() {
     if (Binary.getSize() >= 9) {
-        if (Binary.compare("'7kSt'") && Binary.compare("'zPQ'", 0x0D)) {
+        if (Binary.compare("'7kSt'") && Binary.compare("'zPQ'", 0x0d)) {
             bDetected = true;
         }
     }

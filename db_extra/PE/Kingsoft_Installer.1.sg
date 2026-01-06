@@ -4,7 +4,8 @@
 meta("installer", "Kingsoft");
 
 function detect() {
-    if (PE.compareEP("E8") || PE.compareEP("60")) { // MSV C++ or UPX
+    if (PE.compareEP("E8") || PE.compareEP("60")) {
+        // MSV C++ or UPX
         if (PE.compareOverlay("'zzd.'")) {
             sOptions = "7z archive";
             bDetected = true;

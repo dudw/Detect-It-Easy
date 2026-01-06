@@ -9,11 +9,13 @@
 meta("protector", "OneVM");
 
 function detect() {
-    if (PE.isNet() &&
+    if (
+        PE.isNet() &&
         PE.isNetObjectPresent("Koi") &&
         PE.isNetObjectPresent("OneVM.Runtime") &&
         PE.isSignatureInSectionPresent(0, "72 .. .. .. .. 73 .. .. .. .. 7A") && // throw
-        PE.isSignatureInSectionPresent(0, "%% 00 %% %% %% %% %% %% %% %% 00 %%")) {
+        PE.isSignatureInSectionPresent(0, "%% 00 %% %% %% %% %% %% %% %% 00 %%")
+    ) {
         bDetected = true;
 
         if (PE.isNetUStringPresent("OneVM V2 BETA")) {

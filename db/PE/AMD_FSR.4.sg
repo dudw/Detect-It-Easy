@@ -20,7 +20,8 @@ function detect() {
         } else if (PE.isExportFunctionPresent("ffxFsr3UpscalerContextCreate")) {
             sOptions = "static"; // EAT
             sVersion = "3.X";
-        } else if (PE.isLibraryPresentExp(/^ffx_fsr/i) || PE.isLibraryPresentExp(/fidelityfx/i)) { // unknown version
+        } else if (PE.isLibraryPresentExp(/^ffx_fsr/i) || PE.isLibraryPresentExp(/fidelityfx/i)) {
+            // unknown version
             bDetected = true;
         } else if (PE.isExportFunctionPresentExp(/^ffxFsr/)) {
             sOptions = "static"; // EAT

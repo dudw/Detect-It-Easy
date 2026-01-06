@@ -9,9 +9,11 @@ function detect() {
         var nOffset = PE.getOverlayOffset(),
             nSize = PE.getOverlaySize();
 
-        if (PE.isResourceGroupNamePresent("PICKLE") !== 0 &&
+        if (
+            PE.isResourceGroupNamePresent("PICKLE") !== 0 &&
             PE.findString(nOffset, nSize, "REALbasic.Point") !== -1 &&
-            PE.findString(nOffset, nSize, "Xojo.Introspection") !== -1) {
+            PE.findString(nOffset, nSize, "Xojo.Introspection") !== -1
+        ) {
             bDetected = true;
         }
     }

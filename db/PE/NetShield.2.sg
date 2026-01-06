@@ -25,7 +25,6 @@ function detect() {
                 sOptions = sOptions.append("Anti-de4dot");
             }
         }
-
     }
 
     return result();

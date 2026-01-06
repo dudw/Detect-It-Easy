@@ -7,19 +7,21 @@ meta("cryptor", "njCrypter");
 function detect() {
     if (PE.isNET()) {
         bDetected = true;
-        if (validateReferences(
-            isPositive = true,
-            references = [
-                "System.IO",
-                "System.Security.Cryptography",
-                "System.Text",
-                "System.Reflection",
-                "Stub",
-                "cMain",
-                "Decrypt",
-                "bSalt"
-            ]
-        )) {
+        if (
+            validateReferences(
+                (isPositive = true),
+                (references = [
+                    "System.IO",
+                    "System.Security.Cryptography",
+                    "System.Text",
+                    "System.Reflection",
+                    "Stub",
+                    "cMain",
+                    "Decrypt",
+                    "bSalt"
+                ])
+            )
+        ) {
             bDetected = false;
             return null; // end
         }
@@ -27,7 +29,6 @@ function detect() {
 
     return result();
 }
-
 
 // validateReferences by DosX
 function validateReferences(isPositive, references) {
@@ -37,7 +38,8 @@ function validateReferences(isPositive, references) {
             if (!PE.isSignatureInSectionPresent(0, sign)) {
                 return true;
             }
-        } else { // negative
+        } else {
+            // negative
             if (PE.isSignatureInSectionPresent(0, sign)) {
                 return true;
             }

@@ -12,7 +12,7 @@ function detect() {
             sOptions = "1990-94 by SimpleWare";
             bDetected = true;
         } else if (MSDOS.compareOverlay("'Simply Help!'")) {
-            sName = "Simply Help! TSR Viewer"
+            sName = "Simply Help! TSR Viewer";
             sOptions = "1990-94 by SimpleWare";
             bDetected = true;
         }

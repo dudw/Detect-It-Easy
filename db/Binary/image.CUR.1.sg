@@ -19,8 +19,7 @@ function detect() {
             for (var i = 0; i < nCount; i++) {
                 if (Binary.read_uint8(9 + i * 16)) return false;
                 sz_ = Binary.read_uint32(14 + i * 16, _LE);
-                if (!sz_ || sz_ > X.Sz() - 22)
-                    return false;
+                if (!sz_ || sz_ > X.Sz() - 22) return false;
                 sz += sz_;
                 var w = X.U8(6 + i * 16);
                 if (w > nWidth) {

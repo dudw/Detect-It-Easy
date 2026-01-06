@@ -64,22 +64,22 @@ function detect() {
                         case 0x09:
                             sOption("HEVAG");
                             break; // Compressed PSVita ADPCM data.
-                        case 0x0A:
+                        case 0x0a:
                             sOption("XMA");
                             break; // Compressed Xbox360 XMA data.
-                        case 0x0B:
+                        case 0x0b:
                             sOption("MP3");
                             break; // Compressed MPEG layer 2 or 3 data.
-                        case 0x0C:
+                        case 0x0c:
                             sOption("CELT");
                             break; // Compressed CELT data.
-                        case 0x0D:
+                        case 0x0d:
                             sOption("AT9");
                             break; // Compressed PSVita ATRAC9 data.
-                        case 0x0E:
+                        case 0x0e:
                             sOption("XWMA");
                             break; // Compressed Xbox360 xWMA data.
-                        case 0x0F:
+                        case 0x0f:
                             sOption("VORBIS");
                             break; // Compressed Vorbis data.
                         case 0x10:
@@ -98,7 +98,6 @@ function detect() {
             }
             sOption("Samples:" + nSamples);
         }
-
     }
 
     return result();

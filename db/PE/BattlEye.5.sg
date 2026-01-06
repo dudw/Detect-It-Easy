@@ -4,9 +4,11 @@
 meta("protection", "BattlEye");
 
 function detect() {
-    if (PE.getSectionNameCollision("0", "1") === ".be" && // VMProtect'ed
+    if (
+        PE.getSectionNameCollision("0", "1") === ".be" && // VMProtect'ed
         (PE.isLibraryPresentExp(/ntdll/) || PE.isFunctionPresent("CryptCATAdminAcquireContext")) &&
-        PE.isSigned()) {
+        PE.isSigned()
+    ) {
         bDetected = true;
 
         if (PE.isSignaturePresent(0x00, PE.getSize() - PE.getOverlaySize(), "'https://cdn.battleye.com/%S/%s/%s'")) {

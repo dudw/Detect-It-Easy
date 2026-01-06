@@ -9,10 +9,14 @@ meta("protector", "XerinFuscator");
 
 function detect() {
     if (PE.isNet()) {
-        if (PE.isNetObjectPresent("XerinAtrribute")) { // At[rr]ibute <- developer mistake
-            const
-                sectionToCheck = PE.section[0].Name === ".text" ? PE.section[0] : PE.section[1],
-                versionStringOffset = PE.findString(sectionToCheck.FileOffset, sectionToCheck.FileSize, "XerinFuscator v");
+        if (PE.isNetObjectPresent("XerinAtrribute")) {
+            // At[rr]ibute <- developer mistake
+            const sectionToCheck = PE.section[0].Name === ".text" ? PE.section[0] : PE.section[1],
+                versionStringOffset = PE.findString(
+                    sectionToCheck.FileOffset,
+                    sectionToCheck.FileSize,
+                    "XerinFuscator v"
+                );
 
             if (versionStringOffset != -1) {
                 sVersion = PE.getString(versionStringOffset + 15, 0x15);
@@ -21,7 +25,11 @@ function detect() {
                 if (PE.isNetObjectPresent("Xerin.Runtime")) sOptions = "XVM";
             }
         } else {
-            if (PE.isNetUStringPresent("C# version only supports level 1 and 3") && PE.getNumberOfSections() > 1 && PE.section[0].Name !== ".text") {
+            if (
+                PE.isNetUStringPresent("C# version only supports level 1 and 3") &&
+                PE.getNumberOfSections() > 1 &&
+                PE.section[0].Name !== ".text"
+            ) {
                 bDetected = true;
             }
 

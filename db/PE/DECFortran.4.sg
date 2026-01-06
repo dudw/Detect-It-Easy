@@ -8,9 +8,13 @@ function detect() {
     if (PE.isSectionNamePresent(".data")) {
         var dataSection = PE.section[".data"];
 
-        var nVersionOffset = PE.findString(dataSection.FileOffset, dataSection.FileSize, "DEC Fortran RTL Message Catalog");
+        var nVersionOffset = PE.findString(
+            dataSection.FileOffset,
+            dataSection.FileSize,
+            "DEC Fortran RTL Message Catalog"
+        );
         if (nVersionOffset != -1) {
-            sVersion = "14-Jul-1999"
+            sVersion = "14-Jul-1999";
             bDetected = true;
         }
     }

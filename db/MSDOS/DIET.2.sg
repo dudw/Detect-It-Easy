@@ -9,7 +9,11 @@ function detect() {
     } else if (MSDOS.compareEP("FC061E0E8CC801......BA....03............................00000000")) {
         sVersion = "1.00d";
         bDetected = true;
-    } else if (MSDOS.compareEP("fc061e0e8cc80106....ba....03c28bd805....8edb8ec033f633ffb9....f3a54b484a79..8ec38ed8be....ad8be8b2..ea")) {
+    } else if (
+        MSDOS.compareEP(
+            "fc061e0e8cc80106....ba....03c28bd805....8edb8ec033f633ffb9....f3a54b484a79..8ec38ed8be....ad8be8b2..ea"
+        )
+    ) {
         sVersion = MSDOS.compareEP("64", 55) ? "1.10a/1.20" : "1.00";
         bDetected = true;
     } else if (MSDOS.compareEP("BE....BF....B9....3BFC72..B44CCD21FDF3A5FC")) {

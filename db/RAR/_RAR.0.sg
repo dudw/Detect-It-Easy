@@ -7,7 +7,7 @@ function detect() {
         sName = RAR.getFileFormatName();
         sVersion = RAR.getFileFormatVersion();
         sOptions = RAR.getFileFormatOptions();
-        
+
         if (sName) {
             bDetected = true;
         }

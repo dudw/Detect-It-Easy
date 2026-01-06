@@ -36,8 +36,10 @@ function detect() {
     } else {
         if (PE.isSectionNamePresent(".ps4")) {
             for (var i = 0; i < PE.getNumberOfImports(); i++) {
-                if (PE.getNumberOfImportThunks(i) == 1 &&
-                    (!PE.getImportFunctionName(i, 0) || PE.getImportFunctionName(i, 0) == "1")) {
+                if (
+                    PE.getNumberOfImportThunks(i) == 1 &&
+                    (!PE.getImportFunctionName(i, 0) || PE.getImportFunctionName(i, 0) == "1")
+                ) {
                     var sLibraryName = PE.getImportLibraryName(i);
 
                     sVersion = PE.getPEFileVersion(PE.getFileDirectory() + "/" + sLibraryName);

@@ -9,7 +9,11 @@
 meta("library", "xUnit.net");
 
 function detect() {
-    if (PE.isNetObjectPresent("xunit.core") || PE.isNetObjectPresent("xunit.assert") || PE.isNetObjectPresent("xunit.analyzers")) {
+    if (
+        PE.isNetObjectPresent("xunit.core") ||
+        PE.isNetObjectPresent("xunit.assert") ||
+        PE.isNetObjectPresent("xunit.analyzers")
+    ) {
         bDetected = true;
     }
 

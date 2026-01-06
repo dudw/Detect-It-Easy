@@ -32,8 +32,14 @@ function detect() {
             sVersion = "3.X";
             bDetected = true;
         } else if (PE.section.length >= 2) {
-            if (PE.section[1].Characteristics == 0xc0000040) { // .sdata
-                if (PE.isSignatureInSectionPresent(1, "5266686E204D182276B5331112330C6D0A204D18229EA129611C76B505190158")) {
+            if (PE.section[1].Characteristics == 0xc0000040) {
+                // .sdata
+                if (
+                    PE.isSignatureInSectionPresent(
+                        1,
+                        "5266686E204D182276B5331112330C6D0A204D18229EA129611C76B505190158"
+                    )
+                ) {
                     sVersion = "4.8-4.9";
                     bDetected = true;
                 }
@@ -42,7 +48,12 @@ function detect() {
 
         if (PE.isNetObjectPresent("NecroVM.Runtime")) return;
 
-        if (PE.isSignatureInSectionPresent(0, "6D5F6973526561644F6E6C790B636F6D70617265496E666F0874657874496E666F076E756D496E666F0C6461746554696D65496E666F0863616C656E6461720A6D5F646174614974656D0963756C747572654944066D5F6E616D65116D5F757365557365724F76657272696465")) {
+        if (
+            PE.isSignatureInSectionPresent(
+                0,
+                "6D5F6973526561644F6E6C790B636F6D70617265496E666F0874657874496E666F076E756D496E666F0C6461746554696D65496E666F0863616C656E6461720A6D5F646174614974656D0963756C747572654944066D5F6E616D65116D5F757365557365724F76657272696465"
+            )
+        ) {
             sVersion = "6.X";
         }
 
@@ -57,24 +68,41 @@ function detect() {
             bDetected = true;
         }
 
-        if (PE.isSignatureInSectionPresent(0, "'$$method0x'363030303331372D310024246D6574686F643078363030303333322D310024246D6574686F643078363030303333322D320024246D6574686F643078363030303334302D310024246D6574686F643078363030303334302D320024246D6574686F643078363030303335332D310024246D6574686F64")) {
+        if (
+            PE.isSignatureInSectionPresent(
+                0,
+                "'$$method0x'363030303331372D310024246D6574686F643078363030303333322D310024246D6574686F643078363030303333322D320024246D6574686F643078363030303334302D310024246D6574686F643078363030303334302D320024246D6574686F643078363030303335332D310024246D6574686F64"
+            )
+        ) {
             sVersion = "6.5";
             bDetected = true;
         }
 
         if (PE.isNetGlobalCctorPresent()) {
-            if (PE.isNetObjectPresent("BinaryReader") && PE.isNetObjectPresent("RSACryptoServiceProvider") && PE.isSignatureInSectionPresent(0, "2000690073002000740061006D00700065007200650064002E00")) {
+            if (
+                PE.isNetObjectPresent("BinaryReader") &&
+                PE.isNetObjectPresent("RSACryptoServiceProvider") &&
+                PE.isSignatureInSectionPresent(0, "2000690073002000740061006D00700065007200650064002E00")
+            ) {
                 sOptions = sOptions.append("Anti-tamper");
                 bDetected = true;
-            } else if (PE.isNetObjectPresent("kernel32") && PE.isSignatureInSectionPresent(0, "6B00650072006E0065006C002000")) {
+            } else if (
+                PE.isNetObjectPresent("kernel32") &&
+                PE.isSignatureInSectionPresent(0, "6B00650072006E0065006C002000")
+            ) {
                 bDetected = true;
             }
         }
 
-        if (PE.isNetObjectPresent("SuppressIldasmAttribute"))
-            sOptions = sOptions.append("Anti-ILDASM");
+        if (PE.isNetObjectPresent("SuppressIldasmAttribute")) sOptions = sOptions.append("Anti-ILDASM");
 
-        if (PE.isSignatureInSectionPresent(0, "45007A006900720069007A0027007300200022002E004E00450054002000520065006100630074006F0072002200210020005400680069007300200061") && PE.isNetObjectPresent("DateTime")) {
+        if (
+            PE.isSignatureInSectionPresent(
+                0,
+                "45007A006900720069007A0027007300200022002E004E00450054002000520065006100630074006F0072002200210020005400680069007300200061"
+            ) &&
+            PE.isNetObjectPresent("DateTime")
+        ) {
             sOptions = sOptions.append("Demo");
             bDetected = true;
         }

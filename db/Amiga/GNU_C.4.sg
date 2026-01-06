@@ -25,7 +25,9 @@ function detect() {
         sVersion = "2.7.2.1";
         sOptions = "type 1";
         bDetected = true;
-    } else if (Amiga.compareEP("23c8........23c0........23cf........2c78....23ce........93c94eae....26404aab....6600")) {
+    } else if (
+        Amiga.compareEP("23c8........23c0........23cf........2c78....23ce........93c94eae....26404aab....6600")
+    ) {
         sVersion = "2.7.2.1";
         sOptions = "type 2";
         bDetected = true;

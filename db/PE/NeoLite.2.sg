@@ -7,7 +7,11 @@ function detect() {
     if (PE.compareEP("8B4424048D5424FC2305........E8........FF35........50FF25")) {
         sVersion = "1.0";
         bDetected = true;
-    } else if (PE.compareEP("E9$$$$$$$$8B44....2305........E8$$$$$$$$5351525657C8......5081ED........8D..........B8........8B1D")) {
+    } else if (
+        PE.compareEP(
+            "E9$$$$$$$$8B44....2305........E8$$$$$$$$5351525657C8......5081ED........8D..........B8........8B1D"
+        )
+    ) {
         sVersion = "1.0";
         bDetected = true;
     } else if (PE.compareEP("E9") && (PE.compareEP("'NeoLite'", 29) || PE.compareEP("'NeoLite'", 33))) {

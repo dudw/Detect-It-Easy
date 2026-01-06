@@ -10,7 +10,8 @@ function detect() {
         }
     } else if (PE.compareEP("558bec83c4..b8........e8........33c05568........64ff30648920e8")) {
         if (PE.resource.length) {
-            if (PE.resource[0].Type == 784) { // ZIP
+            if (PE.resource[0].Type == 784) {
+                // ZIP
                 bDetected = true;
             }
         }
@@ -32,7 +33,9 @@ function detect() {
             bDetected = true;
         }
     }
-    if (PE.compareEP("83ec..5657ff15........8bf08d4424..50c74424..........ff15........8a068b3d........3c..75..56ffd7")) {
+    if (
+        PE.compareEP("83ec..5657ff15........8bf08d4424..50c74424..........ff15........8a068b3d........3c..75..56ffd7")
+    ) {
         if (PE.compareOverlay("'PK'0304")) {
             sName = "SymW32SFX";
             sOptions = "by Symantec";

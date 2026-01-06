@@ -8,7 +8,7 @@ function getChSFXVersion() {
     var nStringOffset = MSDOS.findString(0, Math.min(0x100, MSDOS.getSize()), "ChSFX");
     if (nStringOffset != -1) {
         sResult = MSDOS.getString(nStringOffset + 6);
-        sResult = sResult.replace(/\s+$/, '');
+        sResult = sResult.replace(/\s+$/, "");
     }
 
     return sResult;

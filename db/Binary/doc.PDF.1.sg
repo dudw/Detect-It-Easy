@@ -8,10 +8,9 @@ function detect() {
         bDetected = true;
 
         var c = 0;
-        for (i = 8; i < 15; i++)
-            if (File.read_uint8(i) & 0x80) c++;
+        for (i = 8; i < 15; i++) if (File.read_uint8(i) & 0x80) c++;
 
-        if (c) sOptions = "binary data"
+        if (c) sOptions = "binary data";
     }
 
     return result();

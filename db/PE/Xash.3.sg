@@ -6,10 +6,12 @@ meta("GameEngine", "Xash3D");
 function detect() {
     var dataSection = PE.section[".data"];
 
-    if (dataSection &&
+    if (
+        dataSection &&
         PE.findString(dataSection.FileOffset, dataSection.FileSize, "Xash Error") != -1 &&
         PE.findString(dataSection.FileOffset, dataSection.FileSize, "xash.dll") != -1 &&
-        PE.findString(dataSection.FileOffset, dataSection.FileSize, "Unable to load the xash.dll") != -1) {
+        PE.findString(dataSection.FileOffset, dataSection.FileSize, "Unable to load the xash.dll") != -1
+    ) {
         bDetected = true;
     }
 

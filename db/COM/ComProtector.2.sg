@@ -8,7 +8,9 @@ function detect() {
         sVersion = "1.0";
         sOptions = "1998 by Marco Ruhmann";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$b9....e800005b83c3..90fa8bd48be133c02e030e....2ec007..0f23f82e2b0e....2e300f0f23d8")) {
+    } else if (
+        Binary.compare("e9$$$$b9....e800005b83c3..90fa8bd48be133c02e030e....2ec007..0f23f82e2b0e....2e300f0f23d8")
+    ) {
         sVersion = "1.1";
         sOptions = "1998 by Marco Ruhmann";
         bDetected = true;

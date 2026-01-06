@@ -6,7 +6,8 @@
 // GitHub: https://github.com/DosX-dev
 // Telegram: @DosX_dev
 
-function getPythonVersionByDll(dllFileName) { // python = 💩
+function getPythonVersionByDll(dllFileName) {
+    // python = 💩
     var version = "";
 
     var startIndex = dllFileName.indexOf("python");

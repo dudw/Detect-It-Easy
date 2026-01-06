@@ -14,7 +14,7 @@ function detect() {
         var nVerPos = sDataPreparer.indexOf("IMAPI2");
         if (nVerPos !== -1) {
             var sVersionPart = sDataPreparer.substring(nVerPos + 6).trim();
-            if (sVersionPart.charAt(0) === '(') {
+            if (sVersionPart.charAt(0) === "(") {
                 var nClosePos = sVersionPart.indexOf(")");
 
                 if (nClosePos !== -1) {

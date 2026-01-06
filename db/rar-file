@@ -36,7 +36,6 @@ function detect_RAR(bFile) {
         }
 
         if (sVersion == "4") {
-
             var nOptions = File.readByte(nOffset + 10);
 
             if (nOptions & 8) {
@@ -61,8 +60,7 @@ function detect_RAR(bFile) {
 
                 while (File.readByte(nOffset + 2) == 0x74) {
                     var nLen = File.readDword(nOffset + 7);
-                    Archive.add(File.readDword(nOffset + 11), nLen,
-                        (File.readByte(nOffset + 3) & 0xE0) == 0xE0);
+                    Archive.add(File.readDword(nOffset + 11), nLen, (File.readByte(nOffset + 3) & 0xe0) == 0xe0);
                     nDelta = File.readWord(nOffset + 5) + nLen;
                     if (!nDelta) {
                         break;

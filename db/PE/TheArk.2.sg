@@ -4,7 +4,12 @@
 meta("packer", "TheArk");
 
 function detect() {
-    if (PE.isSectionNamePresent("adr") && PE.isSectionNamePresent("have") && PE.isSectionNamePresent("30cm") && PE.isSectionNamePresent(".tw")) {
+    if (
+        PE.isSectionNamePresent("adr") &&
+        PE.isSectionNamePresent("have") &&
+        PE.isSectionNamePresent("30cm") &&
+        PE.isSectionNamePresent(".tw")
+    ) {
         bDetected = true;
     }
 

@@ -8,7 +8,7 @@ meta("packer", "Quest PowerGUI");
 function detect() {
     bDetected = PE.isNetObjectPresent("Quest.PowerGUI.ScriptRunner");
 
-    sOptions = (bDetected && !PE.isConsole()) ? "Hide console" : "";
+    sOptions = bDetected && !PE.isConsole() ? "Hide console" : "";
 
     sLang = "PowerShell";
 

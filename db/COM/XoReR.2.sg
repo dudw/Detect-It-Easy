@@ -12,7 +12,11 @@ function detect() {
         sVersion = "1.0";
         sOptions = "by dR.No //ViP";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$b8....e721b8....cd21b430cd218b2e....8b1e....bf....b9....b430cd2132..73..be....bf....b9....fcac300547e2")) {
+    } else if (
+        Binary.compare(
+            "e9$$$$b8....e721b8....cd21b430cd218b2e....8b1e....bf....b9....b430cd2132..73..be....bf....b9....fcac300547e2"
+        )
+    ) {
         sVersion = "1.0 [2nd pass]";
         sOptions = "by dR.No //ViP";
         bDetected = true;

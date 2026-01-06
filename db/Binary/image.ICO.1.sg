@@ -14,14 +14,15 @@ function detect() {
         var nWMax = 0,
             nHMax = 0,
             nBPPM = 0,
-            nWMin = 0xFFFFFFFFF,
-            nHMin = 0xFFFFFFFFF,
-            nBPPm = 0xFFFFFFFFF,
+            nWMin = 0xfffffffff,
+            nHMin = 0xfffffffff,
+            nBPPm = 0xfffffffff,
             w,
             h,
             b;
         for (var i = 0; i < nCount; i++) {
-            if (X.U8(9 + i * 16) || X.U16(10 + i * 16, _LE) > 8 || !isWithin(X.U16(12 + i * 16, _LE), 1, 32)) return false;
+            if (X.U8(9 + i * 16) || X.U16(10 + i * 16, _LE) > 8 || !isWithin(X.U16(12 + i * 16, _LE), 1, 32))
+                return false;
             w = X.U8(6 + i * 16);
             b = getCurIcoBPP(6 + i * 16);
             sz_ = X.U32(14 + i * 16, _LE);
@@ -35,7 +36,7 @@ function detect() {
                 } else if (X.c("28000000", nOffset)) {
                     w = Math.abs(X.I32(nOffset + 4, _LE));
                     h = Math.abs(X.I32(nOffset + 8, _LE)); // abs for top-down and otherwise weird BMPs
-                } else return false // unknown format after all
+                } else return false; // unknown format after all
             } else {
                 // _log("bmp, ht @ " + Hex(i * 16 + 7));
                 h = X.U8(7 + i * 16);
@@ -48,10 +49,10 @@ function detect() {
             nBPPM = Math.max(b, nBPPM);
         }
         if (!nWMax || !nHMax) return false;
-        sOption((nWMin != nWMax || nHMin != nHMax ? nWMin + 'x' + nHMin + ' ~ ' : '') + nWMax + "x" + nHMax);
-        sOption((nBPPm != nBPPM ? nBPPm + '~' : '') + nBPPM + "bpp");
+        sOption((nWMin != nWMax || nHMin != nHMax ? nWMin + "x" + nHMin + " ~ " : "") + nWMax + "x" + nHMax);
+        sOption((nBPPm != nBPPM ? nBPPm + "~" : "") + nBPPM + "bpp");
         if (nCount > 1) sOption(nCount + " icons");
-        sOption("sz: " + sz)
+        sOption("sz: " + sz);
         bDetected = true;
     }
 

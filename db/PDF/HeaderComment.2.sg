@@ -3,8 +3,8 @@
 meta("format", "pdf");
 
 function detect() {
-    var sHeaderComment =  PDF.getHeaderCommentAsHex();
-	if (sHeaderComment) {
-	    _setResult("complier", "HeaderComment", sHeaderComment, "");
-	}
+    var sHeaderComment = PDF.getHeaderCommentAsHex();
+    if (sHeaderComment) {
+        _setResult("complier", "HeaderComment", sHeaderComment, "");
+    }
 }

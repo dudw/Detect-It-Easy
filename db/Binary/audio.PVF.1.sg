@@ -13,7 +13,6 @@ function detect() {
             if (X.isVerbose()) sVersion = freq;
             bDetected = true;
         }
-
     }
 
     return result();

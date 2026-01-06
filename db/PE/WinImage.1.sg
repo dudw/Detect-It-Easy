@@ -4,11 +4,13 @@
 meta("sfx", "WinImage");
 
 function detect() {
-    if (PE.compareEP("64a1........558bec6a..68........68........50a1........648925........8b0d........83ec..89018b15")) {
+    if (
+        PE.compareEP("64a1........558bec6a..68........68........50a1........648925........8b0d........83ec..89018b15")
+    ) {
         if (PE.compareOverlay("'RsDl'")) {
             sOptions = "1998 by Gilles Vollant";
             bDetected = true;
-        } else if (PE.compare("'WSfxPK'0304", PE.getOverlayOffset() + 0xC)) {
+        } else if (PE.compare("'WSfxPK'0304", PE.getOverlayOffset() + 0xc)) {
             sVersion = "0.90";
             sOptions = "1993-97 by Gilles Vollant";
             bDetected = true;

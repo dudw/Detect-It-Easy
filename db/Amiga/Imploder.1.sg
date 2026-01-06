@@ -11,7 +11,9 @@ function detect() {
     } else if (Amiga.compareEP("48e7ffff49fa....3c3c....61..4e913c3c")) {
         sVersion = "1.0-3.1";
         bDetected = true;
-    } else if (Amiga.compareEP("6000$$$$48e7fff693c92c78....4eae....28404aac....66..41ec....2c78....4eae....4eae....43fa")) {
+    } else if (
+        Amiga.compareEP("6000$$$$48e7fff693c92c78....4eae....28404aac....66..41ec....2c78....4eae....4eae....43fa")
+    ) {
         sVersion = "1.0-3.1";
         sOptions = "Overlayed Protected type 1";
         bDetected = true;

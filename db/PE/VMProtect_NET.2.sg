@@ -9,17 +9,16 @@
 meta("protector", "VMProtect");
 
 function detect() {
-
-    if (PE.isNet() &&
+    if (
+        PE.isNet() &&
         PE.isNetGlobalCctorPresent() &&
         PE.getNumberOfSections() >= 3 &&
         PE.isNetObjectPresent("SuppressIldasmAttribute") &&
         PE.isNetObjectPresent("kernel32") &&
         PE.isNetObjectPresent("get_IsAttached") &&
-        PE.isNetObjectPresent("OpCodes")) {
-
-        const
-            chunk = "%% %% %% %% %% %% %% %% 00", // chunk size is 8 bytes
+        PE.isNetObjectPresent("OpCodes")
+    ) {
+        const chunk = "%% %% %% %% %% %% %% %% 00", // chunk size is 8 bytes
             scanBytes = PE.getSize() - PE.getOverlaySize();
 
         var globalBigPattern = "00";
@@ -30,15 +29,23 @@ function detect() {
 
         var firstSection = PE.section[0];
 
-        if (PE.isSignaturePresent(firstSection.FileOffset, scanBytes, "'<Module>' 00" + chunk) &&
-            PE.isSignaturePresent(firstSection.FileOffset, scanBytes, globalBigPattern)) {
+        if (
+            PE.isSignaturePresent(firstSection.FileOffset, scanBytes, "'<Module>' 00" + chunk) &&
+            PE.isSignaturePresent(firstSection.FileOffset, scanBytes, globalBigPattern)
+        ) {
             sVersion = "3.X";
             bDetected = true;
         }
 
-
         if (bDetected) {
-            if (PE.isSignaturePresent(firstSection.FileOffset, scanBytes, generateUnicodeSignatureMask("Program will be terminated."))) { // Unicode [global] string
+            if (
+                PE.isSignaturePresent(
+                    firstSection.FileOffset,
+                    scanBytes,
+                    generateUnicodeSignatureMask("Program will be terminated.")
+                )
+            ) {
+                // Unicode [global] string
                 sOptions = "Resources protection";
             }
 
@@ -59,7 +66,9 @@ function detect() {
 
 function generateUnicodeSignatureMask(inputString) {
     var output = "";
-    for (var c = 0; c < inputString.length; c++) { output += (c != 0 ? "00" : "") + "'" + inputString[c] + "'"; }
+    for (var c = 0; c < inputString.length; c++) {
+        output += (c != 0 ? "00" : "") + "'" + inputString[c] + "'";
+    }
     return output;
 }
 

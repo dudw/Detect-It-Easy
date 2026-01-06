@@ -6,10 +6,7 @@ function getVersion() {
     var nSection = ELF.getSectionNumber(".comment");
 
     if (nSection != -1) {
-        var nOffset = ELF.findString(
-            ELF.getSectionFileOffset(nSection),
-            ELF.getSectionFileSize(nSection),
-            "DMD v");
+        var nOffset = ELF.findString(ELF.getSectionFileOffset(nSection), ELF.getSectionFileSize(nSection), "DMD v");
 
         if (nOffset != -1) {
             return ELF.getString(nOffset + 5, 20);

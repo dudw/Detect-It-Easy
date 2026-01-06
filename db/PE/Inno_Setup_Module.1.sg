@@ -4,7 +4,7 @@ meta("installer", "Inno Setup Module");
 
 function getVersionAndOptions(nOffset) {
     var sRawVersion = PE.getString(nOffset);
-    sVersion = sRawVersion.substring(0, sRawVersion.indexOf(')'));
+    sVersion = sRawVersion.substring(0, sRawVersion.indexOf(")"));
     if (/\(u\)/.test(sRawVersion)) {
         sOptions = sOptions.append("unicode");
     } else if (/\(a\)/.test(sRawVersion)) {
@@ -17,7 +17,8 @@ function getVersion(sSection) {
         var nOffset = PE.section[sSection].FileOffset,
             nSize = PE.section[sSection].FileSize;
 
-        if (nSize < 0x4000) {  // There are files with "data" section's size more as 0x2000
+        if (nSize < 0x4000) {
+            // There are files with "data" section's size more as 0x2000
             var nInno = PE.findString(nOffset, nSize, "Inno Setup Setup Data");
             if (nInno != -1) {
                 getVersionAndOptions(nInno + 23);
@@ -45,7 +46,11 @@ function detect() {
     } else {
         if (PE.getString(0x30, 4) == "InUn") {
             sOptions = "uninstall";
-            var nOffset = PE.findString(PE.getOverlayOffset(), Math.min(0x100, PE.getOverlaySize()), "Inno Setup Messages");
+            var nOffset = PE.findString(
+                PE.getOverlayOffset(),
+                Math.min(0x100, PE.getOverlaySize()),
+                "Inno Setup Messages"
+            );
 
             if (nOffset != -1) {
                 getVersionAndOptions(nOffset + 21);

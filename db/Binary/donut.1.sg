@@ -3,13 +3,12 @@
 
 meta("shellcode", "Donut");
 
-
 function detect() {
     bDetected = false;
 
     // https://github.com/TheWover/donut/blob/dafea1702ce2e71d5139c4d583627f7ee740f3ae/donut.c#L1235
     var bInstCall = Binary.readByte(0);
-    if (bInstCall != 0xE8) {
+    if (bInstCall != 0xe8) {
         return result();
     }
 
@@ -17,7 +16,7 @@ function detect() {
         return result();
     }
 
-    var callDest = Binary.readDword(1)
+    var callDest = Binary.readDword(1);
 
     // https://github.com/TheWover/donut/blob/dafea1702ce2e71d5139c4d583627f7ee740f3ae/donut.c#L1239
     var popECXOffset = callDest + 5; // 1 byte for E8 (call opcode) and 4 bytes for destination offset

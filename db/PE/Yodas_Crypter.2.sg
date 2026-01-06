@@ -8,8 +8,12 @@ function detect() {
         bDetected = true;
     } else if (PE.compareEP("60E8000000005D81ED........B9....00008DBD........8BF7")) {
         switch (PE.readWord(PE.getEntryPointOffset() + 14)) {
-            case 0x009E: sVersion = "1.1"; break;
-            case 0x097B: sVersion = "1.2"; break;
+            case 0x009e:
+                sVersion = "1.1";
+                break;
+            case 0x097b:
+                sVersion = "1.2";
+                break;
             default:
                 sVersion = "1.X";
         }

@@ -4,15 +4,12 @@
 meta("DETECTION_TYPE_TEXT", "DETECTION_NAME_TEXT");
 
 function detect() {
-
     if (false) {
-
         sVersion = "DETECTION_VERSION_INFO_TEXT";
 
         sOptions = "DETECTION_OPTIONS_INFO_TEXT";
 
         bDetected = true; // IS_DETECTED_BOOLEAN
-
     }
 
     return result();

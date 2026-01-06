@@ -10,7 +10,12 @@ meta("protector", "Denuvo");
 function detect() {
     if (PE.isNet()) return; // Native code only
 
-    if (PE.isSectionNamePresentExp(/\.(e|sr|x(p|d))data$/) || PE.isSectionNamePresent(".arch") || PE.isSectionNamePresent(".xtext") || PE.isSectionNamePresent(".xtls")) {
+    if (
+        PE.isSectionNamePresentExp(/\.(e|sr|x(p|d))data$/) ||
+        PE.isSectionNamePresent(".arch") ||
+        PE.isSectionNamePresent(".xtext") ||
+        PE.isSectionNamePresent(".xtls")
+    ) {
         if (PE.is64()) {
             // Mad Max, Metal Gear Solid: TPP, Rise of the Tomb Raider
             if (PE.compareEP("51 52 41 50 41 51 4C 8D ?? ?? ?? ?? ?? 4C 8D ?? ?? ?? ?? ?? 4D 29 C1")) {
@@ -23,7 +28,11 @@ function detect() {
                 bDetected = true;
             }
             // Yesterday Origins
-            else if (PE.compareEP("48 89 ?? ?? ?? ?? ?? 48 89 ?? ?? ?? ?? ?? 4C 89 ?? ?? ?? ?? ?? 4C 89 ?? ?? ?? ?? ?? 48 83 FA 01")) {
+            else if (
+                PE.compareEP(
+                    "48 89 ?? ?? ?? ?? ?? 48 89 ?? ?? ?? ?? ?? 4C 89 ?? ?? ?? ?? ?? 4C 89 ?? ?? ?? ?? ?? 48 83 FA 01"
+                )
+            ) {
                 sVersion = "2.0b";
                 bDetected = true;
             }
@@ -33,12 +42,20 @@ function detect() {
                 bDetected = true;
             }
             // Atomic Heart
-            else if (PE.compareEP("48 8D 64 24 .. 50 51 52 80 3D .. .. .. .. .. 75 .. 48 8D 05 .. .. .. .. 48 8D 0D .. .. .. ..")) {
+            else if (
+                PE.compareEP(
+                    "48 8D 64 24 .. 50 51 52 80 3D .. .. .. .. .. 75 .. 48 8D 05 .. .. .. .. 48 8D 0D .. .. .. .."
+                )
+            ) {
                 sVersion = "17.0"; // v17.0, what? How?
                 bDetected = true;
             }
             // Train Sim World CSX Heavy Haul
-            else if (PE.compareEP("4D 8D ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 89 ?? ?? ?? ?? ?? 48 8D ?? ?? 48 89 ?? 48 89 ?? 48 89")) {
+            else if (
+                PE.compareEP(
+                    "4D 8D ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 89 ?? ?? ?? ?? ?? 48 8D ?? ?? 48 89 ?? 48 89 ?? 48 89"
+                )
+            ) {
                 sVersion = "3.0b";
                 bDetected = true;
             }
@@ -46,7 +63,13 @@ function detect() {
             else if (PE.compareEP("47 61 6D 65 41 73 73 65 6D 62 6C 79 44 65 6E 75 76 6F 44 72 6D 2E 64 6C 6C")) {
                 sOptions = "Unity"; // The actual game exe won't show up as Denuvo because it only loads the GameAssembly.dll which is the one protected by Denuvo
                 bDetected = true;
-            } else if (PE.isSignaturePresent(PE.section[0].FileOffset, PE.getSize() - PE.getOverlaySize(), "64 65 6E 75 76 6F 5F 61 74 64 00 00 00 00 00 00")) {
+            } else if (
+                PE.isSignaturePresent(
+                    PE.section[0].FileOffset,
+                    PE.getSize() - PE.getOverlaySize(),
+                    "64 65 6E 75 76 6F 5F 61 74 64 00 00 00 00 00 00"
+                )
+            ) {
                 bDetected = true;
             }
 
@@ -60,10 +83,13 @@ function detect() {
                 sOptions = "Epic Games";
                 bDetected = true;
             }
-
         } else {
             // Pro Evolution Soccer 2017, Champions of Anteria
-            if (PE.compareEP("55 89 E5 8D ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ??")) {
+            if (
+                PE.compareEP(
+                    "55 89 E5 8D ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ?? E8 ?? ?? ?? ??"
+                )
+            ) {
                 sVersion = "1.0";
                 bDetected = true;
             }
@@ -90,7 +116,6 @@ function detect() {
                 sOptions = "uPlay";
                 bDetected = true;
             }
-
         }
     }
 

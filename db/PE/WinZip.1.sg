@@ -16,7 +16,9 @@ function detect() {
     } else if (PE.compareEP("53ff15........b3..38..74..80c3..8a48..4033d23aca74..3acb74..8a48..40")) {
         sVersion = "8.X";
         bDetected = true;
-    } else if (PE.compareEP("e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7bb........74..85c374..f7d0")) {
+    } else if (
+        PE.compareEP("e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7bb........74..85c374..f7d0")
+    ) {
         for (var i = 0; i < PE.resource.length && !bDetected; i++) {
             if (PE.resource[i].Type != "RT_DIALOG") {
                 if (PE.findSignature(PE.resource[i].Offset, Math.min(PE.resource[i].Size, 0x1100), "'PK'0304") != -1) {

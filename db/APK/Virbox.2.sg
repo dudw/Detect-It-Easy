@@ -10,13 +10,8 @@ meta("protector", "Virbox");
 
 function detect() {
     bDetected =
-        (
-            APK.isArchiveRecordPresent("libsandhook.so") ||
-            APK.isArchiveRecordPresent("libsandhook-native.so")
-        ) && (
-            APK.isArchiveRecordPresent("libv++_64.so") ||
-            APK.isArchiveRecordPresent("libv++.so")
-        );
+        (APK.isArchiveRecordPresent("libsandhook.so") || APK.isArchiveRecordPresent("libsandhook-native.so")) &&
+        (APK.isArchiveRecordPresent("libv++_64.so") || APK.isArchiveRecordPresent("libv++.so"));
 
     return result();
 }

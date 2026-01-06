@@ -7,7 +7,11 @@
 meta("format", "Desktop Entry (.desktop)");
 
 function detect() {
-    if (Binary.isText() && (Binary.compare("'#'") || Binary.compare("'\n'") || Binary.compare("'['")) && Binary.isSignaturePresent(0, 512, "'[Desktop Entry]'")) {
+    if (
+        Binary.isText() &&
+        (Binary.compare("'#'") || Binary.compare("'\n'") || Binary.compare("'['")) &&
+        Binary.isSignaturePresent(0, 512, "'[Desktop Entry]'")
+    ) {
         bDetected = true;
     }
 

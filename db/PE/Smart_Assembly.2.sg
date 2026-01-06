@@ -15,17 +15,22 @@ function detect() {
             bDetected = true;
         } else if (PE.isNetObjectPresent("SmartAssembly.Attributes")) {
             bDetected = true;
-        } else if ((nOffset = PE.findString(PE.section[0].FileOffset,
-                PE.section[0].FileSize,
-                "Powered by SmartAssembly ")) != -1) {
+        } else if (
+            (nOffset = PE.findString(PE.section[0].FileOffset, PE.section[0].FileSize, "Powered by SmartAssembly ")) !=
+            -1
+        ) {
             sVersion = PE.getString(nOffset + 25);
             bDetected = true;
         } else {
             var nEPSection = PE.getEntryPointSection();
             if (nEPSection != -1) {
-                if ((nOffset = PE.findString(PE.section[nEPSection].FileOffset,
+                if (
+                    (nOffset = PE.findString(
+                        PE.section[nEPSection].FileOffset,
                         PE.section[nEPSection].FileSize,
-                        "Powered by {smartassembly}")) != -1) {
+                        "Powered by {smartassembly}"
+                    )) != -1
+                ) {
                     bDetected = true;
                 }
             }

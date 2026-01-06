@@ -4,7 +4,9 @@
 meta("other", "Partridgesoft FileSplit Self-Merger");
 
 function detect() {
-    if (PE.compareEP("56576a..ff15........8bf8ff15........8a088b35........80f9..75..50ffd68a0884c974..80f9..75..50ffd6")) {
+    if (
+        PE.compareEP("56576a..ff15........8bf8ff15........8a088b35........80f9..75..50ffd68a0884c974..80f9..75..50ffd6")
+    ) {
         bDetected = true;
     }
 

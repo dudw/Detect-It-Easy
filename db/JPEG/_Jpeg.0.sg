@@ -6,7 +6,7 @@ function detect() {
     sName = Jpeg.getFileFormatName();
     sVersion = Jpeg.getFileFormatVersion();
     sOptions = Jpeg.getFileFormatOptions();
-    
+
     if (sName) {
         bDetected = true;
     }

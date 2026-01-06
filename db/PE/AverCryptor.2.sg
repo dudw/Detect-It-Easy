@@ -8,8 +8,11 @@ function detect() {
         bDetected = true;
 
         switch (PE.readByte(PE.getEntryPointOffset() + 65)) {
-            case 0xFA: sVersion = "1.0"; break;
-            case 0xF7: sVersion = "1.02";
+            case 0xfa:
+                sVersion = "1.0";
+                break;
+            case 0xf7:
+                sVersion = "1.02";
         }
 
         if (!PE.isSectionNamePresent(".avc")) {

@@ -12,7 +12,10 @@ function detect() {
         }
     }
 
-    if (bDetected && PE.isSignatureInSectionPresent(0, "4F0062006600750073006300610074006F0072002000440065006D006F00")) {
+    if (
+        bDetected &&
+        PE.isSignatureInSectionPresent(0, "4F0062006600750073006300610074006F0072002000440065006D006F00")
+    ) {
         sOptions = "demo";
     }
 

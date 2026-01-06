@@ -15,7 +15,11 @@ function detect() {
         sVersion = "#03";
         sOptions = "GENERATED FILE";
         bDetected = true;
-    } else if (Binary.compare("3ec606......90eb$$2e8a36....8ec08cd8be....bf....2e033e....26a3....26893e....26a3....26c706........0e07")) {
+    } else if (
+        Binary.compare(
+            "3ec606......90eb$$2e8a36....8ec08cd8be....bf....2e033e....26a3....26893e....26a3....26c706........0e07"
+        )
+    ) {
         sVersion = "#04";
         bDetected = true;
     } else if (Binary.compare("e8$$$$fc8bec8b4e..2bc08bf9f2aebb....03d9875e..fec58bf1ac8ad0ad8bc88bfeac32c2aae2")) {
@@ -34,7 +38,11 @@ function detect() {
             sOptions = "xorer";
             bDetected = true;
         }
-    } else if (Binary.compare("e9$$$$e8$$$$5e83ee..2e8984....06562e8c9c....0e070e1fb430cd213c..7d..bb....03dee8....b0..b44ccd21")) {
+    } else if (
+        Binary.compare(
+            "e9$$$$e8$$$$5e83ee..2e8984....06562e8c9c....0e070e1fb430cd213c..7d..bb....03dee8....b0..b44ccd21"
+        )
+    ) {
         sVersion = "#11";
         bDetected = true;
     } else if (Binary.compare("e9$$$$b9....be....bf....bb....5357ad3d....74..c1c8..bb....03d933c3abe2")) {

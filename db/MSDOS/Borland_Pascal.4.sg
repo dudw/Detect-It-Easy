@@ -16,7 +16,11 @@ function detect() {
     } else if (MSDOS.compareEP("9a########ba....8eda8c06....33ed8bc405....b1..d3e88cd203c2a3....a3")) {
         sVersion = "7.0";
         bDetected = true;
-    } else if (MSDOS.compareEP("9a########ba....8eda8c06....33ede8....e8....8bc405....b1..d3e88cd203c2a3....a3....0306....a3....a3....a3....a3....8e06....26a1....a3....c706")) {
+    } else if (
+        MSDOS.compareEP(
+            "9a########ba....8eda8c06....33ede8....e8....8bc405....b1..d3e88cd203c2a3....a3....0306....a3....a3....a3....a3....8e06....26a1....a3....c706"
+        )
+    ) {
         sVersion = "6.0";
         bDetected = true;
     } else if (MSDOS.compareEP("9a########06ba....8eda268b3e....8ec25b8bef83ed..1eb8....8ed8b9....2bc8d1e1")) {
@@ -31,11 +35,15 @@ function detect() {
     } else if (MSDOS.compareEP("9a########5589e50ee8$$$$5589e583ec..31c0")) {
         sVersion = "6.0-7.0";
         bDetected = true;
-    } else if (MSDOS.compareEP("9a########ba....8eda8c06....8bc405....b1..d3e88cd203c2a3....a3....26a1....2d....a3....c706")) {
+    } else if (
+        MSDOS.compareEP("9a########ba....8eda8c06....8bc405....b1..d3e88cd203c2a3....a3....26a1....2d....a3....c706")
+    ) {
         sVersion = "4.0-6.0";
         sOptions = "1987";
         bDetected = true;
-    } else if (MSDOS.compareEP("9a########54583bc475..9c585080cc..509d9c589d80e4..75..bb....e8....b8....cd21ba....8eda")) {
+    } else if (
+        MSDOS.compareEP("9a########54583bc475..9c585080cc..509d9c589d80e4..75..bb....e8....b8....cd21ba....8eda")
+    ) {
         sVersion = "6.0-7.0";
         sOptions = "1992 by Borland & Eagle Performance Software";
         bDetected = true;
@@ -63,8 +71,11 @@ function detect() {
     } else if (MSDOS.compareEP("9A0000")) {
         var nDataSeg = MSDOS.readWord(MSDOS.getEntryPointOffset(3));
         var nOffset = MSDOS.addressToOffset(nDataSeg);
-        nOffset = MSDOS.findSignature(nOffset, Math.min(1024, MSDOS.getSize() - nOffset),
-            "'Portions Copyr	ight (c) 1983,9'..' Borland'");
+        nOffset = MSDOS.findSignature(
+            nOffset,
+            Math.min(1024, MSDOS.getSize() - nOffset),
+            "'Portions Copyr	ight (c) 1983,9'..' Borland'"
+        );
         if (nOffset != -1) {
             switch (MSDOS.getString(nOffset + 29, 1)) {
                 case "0":

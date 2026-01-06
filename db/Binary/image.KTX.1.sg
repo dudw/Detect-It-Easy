@@ -18,10 +18,13 @@ function detect() {
             if (Binary.isVerbose()) {
                 sOption(Binary.read_uint32(0x14) + "x" + Binary.read_uint32(0x18));
                 //ref https://registry.khronos.org/KTX/specs/2.0/ktxspec.v2.html
-                p = 0x50; sz = 0; //max ofs among the levels' ends
-                for(i = 0; i < Math.max(1,Binary.read_uint32(0x28)); i++, p += 0x18)
-                    if((t = Binary.read_uint64(p)) > sz) { sz = t + Binary.read_uint64(p+8) }
-                sOption('sz:'+outSz(sz))
+                p = 0x50;
+                sz = 0; //max ofs among the levels' ends
+                for (i = 0; i < Math.max(1, Binary.read_uint32(0x28)); i++, p += 0x18)
+                    if ((t = Binary.read_uint64(p)) > sz) {
+                        sz = t + Binary.read_uint64(p + 8);
+                    }
+                sOption("sz:" + outSz(sz));
             }
         }
 
@@ -33,9 +36,6 @@ function detect() {
                 //sOption(Binary.read_uint32(0x14)+"x"+Binary.read_uint32(0x18));
             }
         }
-
-
-
     }
 
     return result();

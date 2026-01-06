@@ -16,8 +16,7 @@ function getVersion() {
             sVersion = "8";
         } else if (PE.isNetObjectPresent("Borland.Eco.Interfaces")) {
             sVersion = "8 Eco WinForm";
-        } else if (PE.isNetObjectPresent("Borland.Delphi.System") &&
-            PE.isNetObjectPresent("WinForm")) {
+        } else if (PE.isNetObjectPresent("Borland.Delphi.System") && PE.isNetObjectPresent("WinForm")) {
             sVersion = "8 WinForm";
         } else if (PE.isNetObjectPresent("Borland.Delphi.Units")) {
             sVersion = "2005";
@@ -54,41 +53,58 @@ function getVersion() {
         nOffset2 = PE.VAToOffset(nAddress);
 
         if (nOffset2 != -1) {
-            if (nOffset2 >= nSectionOffset && (nOffset2 < nSectionOffset + nSectionSize)) {
+            if (nOffset2 >= nSectionOffset && nOffset2 < nSectionOffset + nSectionSize) {
                 nLng = PE.readDword(nOffset2 - 10 * nAddressSize);
                 nLng1 = PE.readDword(nOffset2 - 10 * nAddressSize - 11 * nAddressSize);
 
                 switch (nLng) {
                     case 0:
-                        if (nLng1 == 0x746E4907) {
+                        if (nLng1 == 0x746e4907) {
                             sVersion = "3";
-                        } else if (nLng1 == 0x4F540774) {
+                        } else if (nLng1 == 0x4f540774) {
                             sVersion = "2";
                         }
 
                         break;
-                    case 0x0B4: sVersion = "C++ Builder"; break;
-                    case 0x114: sVersion = "4"; break;
-                    case 0x120: sVersion = "5"; break;
-                    case 0x128: sVersion = "6 CLX"; break;
-                    case 0x12C: sVersion = "7 CLX"; break;
-                    case 0x138: sVersion = "Kylix"; break;
-                    case 0x15C:
-                    case 0x160: sVersion = (nLng1 == 0x40100000 || nLng1 == 0x100000) ? "7" : "6"; break;
-                    case 0x164: sVersion = "2005"; break;
-                    case 0x190: sVersion = "2006"; break;
+                    case 0x0b4:
+                        sVersion = "C++ Builder";
+                        break;
+                    case 0x114:
+                        sVersion = "4";
+                        break;
+                    case 0x120:
+                        sVersion = "5";
+                        break;
+                    case 0x128:
+                        sVersion = "6 CLX";
+                        break;
+                    case 0x12c:
+                        sVersion = "7 CLX";
+                        break;
+                    case 0x138:
+                        sVersion = "Kylix";
+                        break;
+                    case 0x15c:
+                    case 0x160:
+                        sVersion = nLng1 == 0x40100000 || nLng1 == 0x100000 ? "7" : "6";
+                        break;
+                    case 0x164:
+                        sVersion = "2005";
+                        break;
+                    case 0x190:
+                        sVersion = "2006";
+                        break;
 
                     default:
                         nLng = PE.readDword(nOffset2 - 13 * nAddressSize);
 
-                        if (nLng == 0x1A4) {
+                        if (nLng == 0x1a4) {
                             sName = "Embarcadero Delphi";
                             sVersion = "2009";
-                        } else if (nLng == 0x1AC) {
+                        } else if (nLng == 0x1ac) {
                             var packageInfoResource = PE.resource["PACKAGEINFO"];
 
                             if (packageInfoResource) {
-
                                 nOffset = packageInfoResource.Offset;
                                 nSize = packageInfoResource.Size;
 
@@ -103,15 +119,15 @@ function getVersion() {
                                     sVersion = "2010 or XE";
                                 }
                             }
-                        } else if (nLng == 0x1B4) {
+                        } else if (nLng == 0x1b4) {
                             // 32
                             sName = "Embarcadero Delphi";
                             sVersion = "XE2-XE4";
-                        } else if (nLng == 0x2F0 || nLng == 0x2F8) {
+                        } else if (nLng == 0x2f0 || nLng == 0x2f8) {
                             // 64
                             sName = "Embarcadero Delphi";
                             sVersion = "XE2";
-                        } else if (nLng == 0x1BC) {
+                        } else if (nLng == 0x1bc) {
                             // 32
                             sName = "Embarcadero Delphi";
                             sVersion = "XE5-XE6";
@@ -119,7 +135,7 @@ function getVersion() {
                         } else {
                             if (nAddressSize == 8) {
                                 nLng = PE.readDword(nOffset2 - 16 * nAddressSize);
-                                if (nLng == 0x2F8) {
+                                if (nLng == 0x2f8) {
                                     // 64
                                     sName = "Embarcadero Delphi";
                                     sVersion = "XE3-X4";
@@ -177,7 +193,11 @@ function getVersion() {
         var rdataSection = PE.section[".rdata"];
 
         if (rdataSection) {
-            var nVersionOffset = PE.findString(rdataSection.FileOffset, rdataSection.FileSize, "Embarcadero Delphi for Win");
+            var nVersionOffset = PE.findString(
+                rdataSection.FileOffset,
+                rdataSection.FileSize,
+                "Embarcadero Delphi for Win"
+            );
 
             if (nVersionOffset != -1) {
                 var sCompilerVersion = PE.getString(nVersionOffset + 46, 4);
@@ -212,7 +232,8 @@ function getVersion() {
 }
 
 function detect() {
-    if (bBorlandC) { // can't be Delphi if it's already C/C++
+    if (bBorlandC) {
+        // can't be Delphi if it's already C/C++
         return;
     }
 

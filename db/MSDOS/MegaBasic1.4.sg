@@ -4,7 +4,11 @@
 meta("compiler", "MegaBasic");
 
 function detect() {
-    if (MSDOS.compareEP("e9$$$$b9....33f633ff1607fcf3a5368c1e....a1....161fa3....e8....bc....b430cd21a2....0ac074..86e0")) {
+    if (
+        MSDOS.compareEP(
+            "e9$$$$b9....33f633ff1607fcf3a5368c1e....a1....161fa3....e8....bc....b430cd21a2....0ac074..86e0"
+        )
+    ) {
         sVersion = "5.40";
         sOptions = "1985-87 by Christopher Cochran";
         bDetected = true;
@@ -19,7 +23,9 @@ function detect() {
     } else if (MSDOS.compareEP("e9$$$$b9....33f633ff1607fcf3a5368c1e....161fe8....bc....b430cd21a2....0ac074..86e0")) {
         sOptions = "1985 by Christopher Cochran";
         bDetected = true;
-    } else if (MSDOS.compareEP("e9$$$$b9....33f633ff1607fcf3a5268c1e....161fe8....bc....0e1fba....b8....cd21ba....b8")) {
+    } else if (
+        MSDOS.compareEP("e9$$$$b9....33f633ff1607fcf3a5268c1e....161fe8....bc....0e1fba....b8....cd21ba....b8")
+    ) {
         sOptions = "1985 by Christopher Cochran";
         bDetected = true;
     }

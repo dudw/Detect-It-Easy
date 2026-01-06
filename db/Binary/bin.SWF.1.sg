@@ -12,8 +12,7 @@ function detect() {
                 bDetected = true;
                 break;
             case "CWS":
-                if (detect_zlib(Binary, 0x08))
-                    bDetected = true;
+                if (detect_zlib(Binary, 0x08)) bDetected = true;
                 break;
             case "ZWS":
                 sOptions = "LZMA";

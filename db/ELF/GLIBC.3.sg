@@ -3,8 +3,8 @@
 meta("library", "GLIBC");
 
 function getMaxVersion(sValue1, sValue2) {
-    var aString1 = sValue1.toString().split('.');
-    var aString2 = sValue2.toString().split('.');
+    var aString1 = sValue1.toString().split(".");
+    var aString2 = sValue2.toString().split(".");
 
     for (var i = 0; i < 3; i++) {
         if (aString1[i] > aString2[i]) {
@@ -42,7 +42,6 @@ function detect() {
         }
 
         sOptions = ELF.getGeneralOptions();
-
     }
 
     return result();

@@ -7,8 +7,7 @@ function detect() {
     // I'm (adoxa) guessing these don't occur in the overlay, so don't search it (avoid wasting time on big installers).
     var nSize = PE.isOverlayPresent() ? PE.getOverlayOffset() : PE.getSize();
 
-    if (nSize > 50000000)
-        nSize = 50000000;
+    if (nSize > 50000000) nSize = 50000000;
 
     if (PE.findString(0, nSize, "skeydrv.dll") !== -1) {
         bDetected = true;
@@ -17,9 +16,7 @@ function detect() {
         var foundOffset;
         while ((foundOffset = PE.findString(nOffset, nSize - nOffset, "\\.\\")) !== -1) {
             nOffset = foundOffset + 4;
-            if (PE.compare("'eusk2'", nOffset) ||
-                PE.compare("'Skey-'", nOffset) ||
-                PE.compare("'SkeyDev'", nOffset)) {
+            if (PE.compare("'eusk2'", nOffset) || PE.compare("'Skey-'", nOffset) || PE.compare("'SkeyDev'", nOffset)) {
                 bDetected = true;
                 break;
             }

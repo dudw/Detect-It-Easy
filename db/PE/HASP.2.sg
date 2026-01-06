@@ -4,7 +4,11 @@
 meta("protector", "HASP Protection");
 
 function detect() {
-    if (PE.compareEP("6a..602eff35........2eff35........68........e8........6683c4..2eff35........2eff35........b8........83c0..50")) {
+    if (
+        PE.compareEP(
+            "6a..602eff35........2eff35........68........e8........6683c4..2eff35........2eff35........b8........83c0..50"
+        )
+    ) {
         sOptions = "1997 by Aladdin Knowledge Systems Ltd.";
         bDetected = true;
     }

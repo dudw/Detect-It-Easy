@@ -3,7 +3,7 @@
 meta("format", "Hermes JavaScript bytecode");
 
 function detect() {
-    if (Binary.getSize() >= 0xC) {
+    if (Binary.getSize() >= 0xc) {
         if (Binary.compare("C61FBC03C103191F", Binary.read_uint64(0, _BE))) {
             sVersion = Binary.read_uint32(8);
             bDetected = true;

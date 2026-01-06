@@ -29,7 +29,11 @@ function detect() {
         }
     }
 
-    if (isRwxSectionPresent && xvlkSectionsCounter >= 2 && PE.getNumberOfSections() === (xvlkSectionsCounter + resourceSectionsCounter)) {
+    if (
+        isRwxSectionPresent &&
+        xvlkSectionsCounter >= 2 &&
+        PE.getNumberOfSections() === xvlkSectionsCounter + resourceSectionsCounter
+    ) {
         sOptions = "unpacked";
         bDetected = true;
     }

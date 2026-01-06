@@ -6,7 +6,6 @@ meta("archive", "FreeARC Archive (.ARC)");
 
 function detect() {
     if (Binary.getSize() >= 9) {
-
         if (Binary.compare("417243010000")) {
             bDetected = true;
         }

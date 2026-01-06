@@ -6,8 +6,8 @@ meta("format", "Protein Data Bank file");
 function detect() {
     if (Binary.compare("'HEADER'") && (Binary.isHeuristicScan() || extIs("pdb"))) {
         //ref http://www.wwpdb.org/documentation/file-format-content/format33/sect1.html
-        L = ['', '', '', '', ''];
-        ttl = '';
+        L = ["", "", "", "", ""];
+        ttl = "";
         L[0] = Binary.read_ansiString(0, Binary.findSignature(0, 81, "0A"));
         if (/[\x20-\x7F]{65,}/.test(L[0])) {
             bDetected = true;
@@ -25,11 +25,11 @@ function detect() {
                             sOptionT(L[i].substr(50, 9), "dep. ");
                             break;
                         case "TITLE ":
-                            ttl += ' ' + L[i].substr(10, 70).trim();
+                            ttl += " " + L[i].substr(10, 70).trim();
                             break;
                     }
                 }
-                sOptionT(ttl, "Title: ")
+                sOptionT(ttl, "Title: ");
             }
         }
     }

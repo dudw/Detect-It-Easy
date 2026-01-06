@@ -3,8 +3,6 @@
 meta("compiler", "PureBasic");
 
 function detect() {
-
-
     var codeSectionDetected = false; // If no code section is detected, then it is not PureBasic
 
     for (var i = 1; i < PE.getNumberOfSections() && !codeSectionDetected; i++) {
@@ -14,7 +12,6 @@ function detect() {
     }
 
     if (!codeSectionDetected) return false;
-
 
     if (!PE.is64()) {
         if (PE.compareEP("68....0000680000000068......00E8......0083C40C6800000000E8......00A3")) {
@@ -45,7 +42,12 @@ function detect() {
         const rdataSection = PE.section[".rdata"];
 
         if (rdataSection) {
-            bDetected = PE.findSignature(rdataSection.FileOffset, 5120, "1415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30313233") !== -1;
+            bDetected =
+                PE.findSignature(
+                    rdataSection.FileOffset,
+                    5120,
+                    "1415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30313233"
+                ) !== -1;
         }
     }
 

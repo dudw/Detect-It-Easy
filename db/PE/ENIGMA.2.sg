@@ -15,7 +15,6 @@ function getEnigmaVersion() {
 
     var nVersionOffset = PE.findSignature(nOffset, nSize, "000000'ENIGMA'");
     if (nVersionOffset != -1) {
-
         var sMajor = PE.readByte(nVersionOffset + 9),
             sMinor = PE.readByte(nVersionOffset + 10),
             bYear = PE.readWord(nVersionOffset + 11),
@@ -25,7 +24,22 @@ function getEnigmaVersion() {
             bMin = PE.readWord(nVersionOffset + 19),
             bSec = PE.readWord(nVersionOffset + 21);
 
-        sVersion = sMajor + "." + sMinor + " build " + bYear + "." + bMonth + "." + bDay + " " + bHour + ":" + bMin + ":" + bSec;
+        sVersion =
+            sMajor +
+            "." +
+            sMinor +
+            " build " +
+            bYear +
+            "." +
+            bMonth +
+            "." +
+            bDay +
+            " " +
+            bHour +
+            ":" +
+            bMin +
+            ":" +
+            bSec;
         return true;
     }
     nVersionOffset = PE.findSignature(nOffset, nSize, "'Enigma Protector'");
@@ -45,7 +59,6 @@ function getEnigmaVersion4x() {
     var nVersionOffset = PE.findSignature(nOffset, nSize, "000000'ENIGMA'");
 
     if (nVersionOffset != -1) {
-
         var sMajor = PE.readByte(nVersionOffset + 9),
             sMinor = PE.readByte(nVersionOffset + 10),
             bYear = PE.readWord(nVersionOffset + 11),
@@ -55,7 +68,22 @@ function getEnigmaVersion4x() {
             bMin = PE.readWord(nVersionOffset + 19),
             bSec = PE.readWord(nVersionOffset + 21);
 
-        sVersion = sMajor + "." + sMinor + " build " + bYear + "." + bMonth + "." + bDay + " " + bHour + ":" + bMin + ":" + bSec;
+        sVersion =
+            sMajor +
+            "." +
+            sMinor +
+            " build " +
+            bYear +
+            "." +
+            bMonth +
+            "." +
+            bDay +
+            " " +
+            bHour +
+            ":" +
+            bMin +
+            ":" +
+            bSec;
         return true;
     }
 
@@ -65,10 +93,14 @@ function getEnigmaVersion4x() {
 function getEnigmaVersion_old1x() {
     var nSection = PE.nLastSection;
 
-    var nVersionOffset = PE.findSignature(PE.section[nSection].FileOffset, PE.section[nSection].FileSize, "'ENIGMA'07' PROT'");
+    var nVersionOffset = PE.findSignature(
+        PE.section[nSection].FileOffset,
+        PE.section[nSection].FileSize,
+        "'ENIGMA'07' PROT'"
+    );
 
     if (nVersionOffset != -1) {
-        sVersion = 'v1.14';
+        sVersion = "v1.14";
         return true;
     }
 
@@ -79,7 +111,6 @@ function getEnigmaVersion_old() {
     var dataSection = PE.section[".data"];
 
     if (dataSection) {
-
         var nOffset = dataSection.FileOffset,
             nOffset = PE.findString(nOffset, dataSection.FileSize, "Enigma protector v");
 
@@ -114,15 +145,19 @@ function detect() {
             } else if (PE.compareEP("e8$$$$$$$$83c4..e9$$$$$$$$60e8000000005d81ed........81ed........e9")) {
                 getEnigmaVersion();
                 bDetected = true;
-            } else if (PE.compareEP("60e8000000005d83....81ed")) { // first versions
+            } else if (PE.compareEP("60e8000000005d83....81ed")) {
+                // first versions
                 getEnigmaVersion_old();
                 bDetected = true;
-            } else if (PE.compareEP("eb$$e9$$$$$$$$60e8000000005d83....81ed")) {  // 1.14
+            } else if (PE.compareEP("eb$$e9$$$$$$$$60e8000000005d83....81ed")) {
+                // 1.14
                 getEnigmaVersion_old1x();
                 getEnigmaVersion_old();
                 bDetected = true;
             }
-        } else if (PE.compareEP("5051525355565741504151415241534154415541564157489C4881EC080000000FAE1C24E8000000005D")) {
+        } else if (
+            PE.compareEP("5051525355565741504151415241534154415541564157489C4881EC080000000FAE1C24E8000000005D")
+        ) {
             getEnigmaVersion();
             bDetected = true;
         } else if (PE.compareEP("eb$$60e8000000005d81ed........81ed........e9")) {
@@ -131,11 +166,13 @@ function detect() {
         }
 
         if (!bDetected) {
-            if (PE.getNumberOfImports() > 1 &&
+            if (
+                PE.getNumberOfImports() > 1 &&
                 PE.getNumberOfImportThunks(1) == 1 &&
                 PE.getImportFunctionName(1, 0) == "MessageBoxA" &&
                 PE.getSectionCharacteristics(0) == 0xe0000040 &&
-                getEnigmaVersion()) {
+                getEnigmaVersion()
+            ) {
                 bDetected = true;
             } else if (PE.getSectionNameCollision("1", "2") == "enigma") {
                 bDetected = true;
@@ -146,7 +183,6 @@ function detect() {
             getEnigmaVersion4x();
             bDetected = true;
         }
-
     }
     return result();
 }

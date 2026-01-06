@@ -41,7 +41,6 @@ function detect() {
 }
 
 function removeFalsePositive(data) {
-
     var falsePositive = data.falsePositive,
         ifPresents = data.ifPresents;
 

@@ -8,8 +8,9 @@ function getUPXOptions(nOffset) {
     var nLevel = LE.readByte(nOffset + 3);
 
     var sCompression = "";
-    switch (nMethod) // From http://sourceforge.net/p/upx/code/ci/default/tree/src/conf.h
-    {
+    switch (
+        nMethod // From http://sourceforge.net/p/upx/code/ci/default/tree/src/conf.h
+    ) {
         case 2:
             sCompression = "NRV2B_LE32";
             break;
@@ -66,7 +67,7 @@ function getUPXVersion() {
     if (nOffset1 != -1) {
         sVersion = LE.getString(nOffset1 + 9, 4);
     }
-    if ((sVersion == "") && (nOffset2 != -1)) {
+    if (sVersion == "" && nOffset2 != -1) {
         sVersion = LE.getString(nOffset2 - 5, 4);
     }
 }

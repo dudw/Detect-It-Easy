@@ -9,14 +9,18 @@
 meta("packer", "Windows PE Packer by Chenzs108");
 
 function detect() {
-    if (!PE.is64() && !PE.isNet() &&
+    if (
+        !PE.is64() &&
+        !PE.isNet() &&
         PE.getNumberOfSections() > 2 &&
         PE.getNumberOfImports() === 1 &&
-        PE.isImportPositionHashPresent(0, 0x1272f45b)) {
+        PE.isImportPositionHashPresent(0, 0x1272f45b)
+    ) {
         if (PE.compareEP("60E8E10000002E0002000000000000")) {
             var shellSectionByIndex = PE.section[PE.nLastSection];
 
-            if (shellSectionByIndex.Characteristics & 0xe0000040) { // R/W/X
+            if (shellSectionByIndex.Characteristics & 0xe0000040) {
+                // R/W/X
                 bDetected = true;
 
                 if (shellSectionByIndex.Name !== ".shell") {
@@ -27,7 +31,6 @@ function detect() {
                 }
             }
         }
-
     }
 
     return result();

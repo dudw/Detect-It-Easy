@@ -3,7 +3,7 @@
 meta("compiler", "LDC");
 
 function detect() {
-    if (PE.isSectionNamePresent(".minfo") && (!(PE.isSectionNamePresent("._deh")))) {
+    if (PE.isSectionNamePresent(".minfo") && !PE.isSectionNamePresent("._deh")) {
         bDetected = true;
     }
 

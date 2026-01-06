@@ -11,13 +11,25 @@ function detect() {
         }
         bDetected = true;
     } else if (PE.compareOverlay("e0e0e1e1e2e2e3e3e4e4e5e5e6e6e7e7")) {
-        if (PE.compareEP("e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7bb........74..85c374..f7d0a3........eb")) {
+        if (
+            PE.compareEP(
+                "e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7bb........74..85c374..f7d0a3........eb"
+            )
+        ) {
             sVersion = "8.0";
             bDetected = true;
-        } else if (PE.compareEP("e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc774..85c374..f7d0a3........eb")) {
+        } else if (
+            PE.compareEP(
+                "e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc774..85c374..f7d0a3........eb"
+            )
+        ) {
             sVersion = "9.0";
             bDetected = true;
-        } else if (PE.compareEP("4883ec..e8$$$$$$$$48895c24..574883ec..488b05........48836424....48bf................483bc774..48f7d0488905........eb")) {
+        } else if (
+            PE.compareEP(
+                "4883ec..e8$$$$$$$$48895c24..574883ec..488b05........48836424....48bf................483bc774..48f7d0488905........eb"
+            )
+        ) {
             sVersion = "9.5";
             bDetected = true;
         }

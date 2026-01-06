@@ -26,21 +26,37 @@ function detect() {
         while (count < 1000) {
             count++;
             var da = PE.getDisasmString(ep);
-            if (da.indexOf(' ') != -1) {
-                da = da.slice(0, da.indexOf(' '));
+            if (da.indexOf(" ") != -1) {
+                da = da.slice(0, da.indexOf(" "));
             }
-            if (da == "CLC") { clc++; }
-            if (da == "STC") { stc++; }
-            if (da == "MOVSX") { movsx++; }
-            if (da == "MOVZX") { movzx++; }
-            if (da == "SUB") { sub++; }
-            if (da == "IMUL") { imul++; }
-            if (da == "BT" || da == "BTR" || da == "BTS" || da == "BTC") { bt++; }
-            if (da == "BSF" || da == "BSR" || da == "BSWAP") { bsf++; }
+            if (da == "CLC") {
+                clc++;
+            }
+            if (da == "STC") {
+                stc++;
+            }
+            if (da == "MOVSX") {
+                movsx++;
+            }
+            if (da == "MOVZX") {
+                movzx++;
+            }
+            if (da == "SUB") {
+                sub++;
+            }
+            if (da == "IMUL") {
+                imul++;
+            }
+            if (da == "BT" || da == "BTR" || da == "BTS" || da == "BTC") {
+                bt++;
+            }
+            if (da == "BSF" || da == "BSR" || da == "BSWAP") {
+                bsf++;
+            }
             ep = PE.getDisasmNextAddress(ep);
         }
 
-        if (clc > 0 && stc > 0 && movzx != 0 && (sub > imul || sub == 0 && imul == 0) && bt == 0 && bsf == 0) {
+        if (clc > 0 && stc > 0 && movzx != 0 && (sub > imul || (sub == 0 && imul == 0)) && bt == 0 && bsf == 0) {
             bDetected = true;
         }
     }

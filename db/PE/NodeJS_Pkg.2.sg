@@ -4,11 +4,13 @@
 meta("packer", "pkg");
 
 function detect() {
-    if (!PE.isExportFunctionPresent("napi_wrap"))
-        return;
+    if (!PE.isExportFunctionPresent("napi_wrap")) return;
 
     // Has overlay at all
-    bDetected = PE.isOverlayPresent() && PE.getOverlaySize() >= 0x100 && PE.findString(PE.section[1].FileOffset, PE.section[1].FileSize, "pkg/prelude/bootstrap.js") != -1;
+    bDetected =
+        PE.isOverlayPresent() &&
+        PE.getOverlaySize() >= 0x100 &&
+        PE.findString(PE.section[1].FileOffset, PE.section[1].FileSize, "pkg/prelude/bootstrap.js") != -1;
 
     sLang = "JavaScript";
 

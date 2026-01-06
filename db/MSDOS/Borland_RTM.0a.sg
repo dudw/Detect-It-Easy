@@ -6,11 +6,11 @@ meta("extender", "Borland RTM DPMI loader");
 function getBLVersion() {
     var sResult = "";
 
-    var nOffset = MSDOS.findString(0, MSDOS.getSize(), "RTM loader version")
+    var nOffset = MSDOS.findString(0, MSDOS.getSize(), "RTM loader version");
 
     if (nOffset != -1) {
         sResult = MSDOS.getString(nOffset + 19);
-        sResult = sResult.substr(0, sResult.indexOf(' '));
+        sResult = sResult.substr(0, sResult.indexOf(" "));
     }
 
     return sResult;

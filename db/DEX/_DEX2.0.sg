@@ -9,5 +9,5 @@ function detect() {
 
     bDetected = true;
 
-    return result(); 
+    return result();
 }

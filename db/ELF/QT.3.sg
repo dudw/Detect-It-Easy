@@ -18,7 +18,6 @@ function getQTVersion() {
 }
 
 function detect() {
-
     if (ELF.isStringInTablePresent(".dynstr", "libQtCore.so.4")) {
         sVersion = "4.X";
         bDetected = true;

@@ -10,7 +10,9 @@ function detect() {
             sVersion = "GuardIT ~2013";
         } else {
             var ep = skipJumpsAndNops(PE.getEntryPointOffset()),
-                rva = PE.compare("48 83 EC 28 E8", ep) ? PE.OffsetToRVA(ep) + PE.readSDword(ep + 5) + 9 : PE.OffsetToRVA(ep);
+                rva = PE.compare("48 83 EC 28 E8", ep)
+                    ? PE.OffsetToRVA(ep) + PE.readSDword(ep + 5) + 9
+                    : PE.OffsetToRVA(ep);
 
             if (rva != -1) {
                 var addr = PE.OffsetToVA(PE.RVAToOffset(rva));
@@ -34,13 +36,14 @@ function detect() {
                         addr = PE.getDisasmNextAddress(addr);
                     }
 
-                    if (movupdCount > 0 &&
+                    if (
+                        movupdCount > 0 &&
                         PE.getDisasmString(addr) === "PUSH 0X10" &&
-                        PE.getDisasmString(PE.getDisasmNextAddress(addr)) === "TEST RSP, 0XF") {
-
+                        PE.getDisasmString(PE.getDisasmNextAddress(addr)) === "TEST RSP, 0XF"
+                    ) {
                         bDetected = true;
                         sVersion = "GuardIT ";
-                        sVersion += (pushCount < 14 || movupdCount < 16) ? "12.0+" : "2014-2021";
+                        sVersion += pushCount < 14 || movupdCount < 16 ? "12.0+" : "2014-2021";
                     }
                 }
             }
@@ -54,9 +57,9 @@ function skipJumpsAndNops(offset) {
     var rva = PE.OffsetToRVA(offset);
     while (true) {
         const byte = PE.readByte(PE.RVAToOffset(rva));
-        if (byte === 0xE9) {
+        if (byte === 0xe9) {
             rva += PE.readSDword(PE.RVAToOffset(rva + 1)) + 5;
-        } else if (byte === 0xEB) {
+        } else if (byte === 0xeb) {
             rva += PE.readSByte(PE.RVAToOffset(rva + 1)) + 2;
         } else if (byte === 0x90) {
             rva++;

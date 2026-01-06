@@ -4,46 +4,46 @@
 meta("tool", "");
 
 function detect() {
-    if (Jpeg.isChunkPresent(0xE2)) {
+    if (Jpeg.isChunkPresent(0xe2)) {
         _setResult("tool", "FlashPix/ICC", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE3)) {
+    if (Jpeg.isChunkPresent(0xe3)) {
         _setResult("tool", "Kodak", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE4)) {
+    if (Jpeg.isChunkPresent(0xe4)) {
         _setResult("tool", "FlashPix", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE5)) {
+    if (Jpeg.isChunkPresent(0xe5)) {
         _setResult("tool", "Ricoh", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE6)) {
+    if (Jpeg.isChunkPresent(0xe6)) {
         _setResult("tool", "GoPro", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE7)) {
+    if (Jpeg.isChunkPresent(0xe7)) {
         _setResult("tool", "Pentax/Qualcomm", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE8)) {
+    if (Jpeg.isChunkPresent(0xe8)) {
         _setResult("tool", "Spiff", "", "");
     }
-    if (Jpeg.isChunkPresent(0xE9)) {
+    if (Jpeg.isChunkPresent(0xe9)) {
         _setResult("tool", "MediaJukebox", "", "");
     }
-    if (Jpeg.isChunkPresent(0xEA)) {
+    if (Jpeg.isChunkPresent(0xea)) {
         _setResult("tool", "PhotoStudio", "", "");
     }
-    if (Jpeg.isChunkPresent(0xEB)) {
+    if (Jpeg.isChunkPresent(0xeb)) {
         _setResult("tool", "HDR", "", "");
     }
-    if (Jpeg.isChunkPresent(0xEC)) {
+    if (Jpeg.isChunkPresent(0xec)) {
         _setResult("tool", "Photoshop", "", "Web");
     }
-    if (Jpeg.isChunkPresent(0xED)) {
+    if (Jpeg.isChunkPresent(0xed)) {
         _setResult("tool", "Photoshop", "", "");
     }
-    if (Jpeg.isChunkPresent(0xEE)) {
+    if (Jpeg.isChunkPresent(0xee)) {
         _setResult("tool", "Adobe", "", "");
     }
-    if (Jpeg.isChunkPresent(0xEF)) {
+    if (Jpeg.isChunkPresent(0xef)) {
         _setResult("tool", "GraphicConverter", "", "");
     }
 

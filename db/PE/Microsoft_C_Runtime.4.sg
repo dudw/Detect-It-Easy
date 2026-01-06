@@ -8,8 +8,7 @@
 meta("library", "Microsoft C/C++ Runtime");
 
 function detect() {
-    if (PE.isLibraryPresent("vcruntime140.dll") ||
-        PE.isLibraryPresent("vcruntime140_1.dll")) {
+    if (PE.isLibraryPresent("vcruntime140.dll") || PE.isLibraryPresent("vcruntime140_1.dll")) {
         sOptions = "dynamic";
         bDetected = true;
     }

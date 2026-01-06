@@ -7,7 +7,11 @@ meta("installer", "SQX Archive Installer 2002");
 function detect() {
     var dataSection = PE.section[".data"];
 
-    if (PE.compareEP("558bec83ec44") && dataSection && PE.findString(dataSection.FileOffset, dataSection.FileSize, "SFX kann nicht gestartet werden") != 1) {
+    if (
+        PE.compareEP("558bec83ec44") &&
+        dataSection &&
+        PE.findString(dataSection.FileOffset, dataSection.FileSize, "SFX kann nicht gestartet werden") != 1
+    ) {
         bDetected = true;
     }
 

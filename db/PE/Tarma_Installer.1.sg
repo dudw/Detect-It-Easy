@@ -17,7 +17,11 @@ function detect() {
             sName = "Tarma InstallMate";
             sVersion = "9.0";
             bDetected = true;
-        } else if (PE.compareEP("48895c24..48896c24..48897424..574881ec........66836424....33f633ffff15........488d8c24........8bd8ff15")) {
+        } else if (
+            PE.compareEP(
+                "48895c24..48896c24..48897424..574881ec........66836424....33f633ffff15........488d8c24........8bd8ff15"
+            )
+        ) {
             sName = "Tarma InstallMate";
             sVersion = "9.0";
             sOptions = "x64";

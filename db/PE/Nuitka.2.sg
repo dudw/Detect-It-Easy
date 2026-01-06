@@ -10,7 +10,7 @@
 meta("packer", "Nuitka");
 
 function detect() {
-    var dataSection = PE.section[".rdata"]
+    var dataSection = PE.section[".rdata"];
 
     if (dataSection && !PE.isRichSignaturePresent()) {
         var dataSectionOffset = dataSection.FileOffset,

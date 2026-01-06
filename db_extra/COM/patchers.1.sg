@@ -8,18 +8,20 @@ function detect() {
         sName = "Patch engine";
         sOptions = "by SoNiC //UTG";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$b80300cd10b409ba....cd21e8$$$$1eb8....8ed833c98a0e....fec95133d2fec68916....b4..b2..cd21")) {
+    } else if (
+        Binary.compare("e9$$$$b80300cd10b409ba....cd21e8$$$$1eb8....8ed833c98a0e....fec95133d2fec68916....b4..b2..cd21")
+    ) {
         sName = "ByteHunter patch engine";
         sOptions = "by nOP & THE_q //Phrozen Crew";
         bDetected = true;
     } else if (Binary.compare("e9$$$$0e588ec08ed88d16....68....9d9c582d....72..33dbb9")) {
         sName = "GPatch";
-        sVersion = "1.2b"
+        sVersion = "1.2b";
         sOptions = "by JES //C.O.R.E. team";
         bDetected = true;
     } else if (Binary.compare("e9$$$$0e588ec08ed8e8$$$$68....9d9c582d....73..8d3e....fbc3")) {
         sName = "GPatch";
-        sVersion = "1.0c"
+        sVersion = "1.0c";
         sOptions = "by JES //C.O.R.E. team";
         bDetected = true;
     } else if (Binary.compare("e9$$$$e8$$$$50558becc746......5d0733ffb9....fcb8....f3abc3")) {
@@ -60,20 +62,34 @@ function detect() {
         sName = "SNT patch";
         sOptions = "//SNT";
         bDetected = true;
-    } else if (Binary.compare("eb$$0e1fb409ba....cd21be....e8....803e......74..b4..ba....cd21eb..b4..ba....cd21b8....cd21")) {
+    } else if (
+        Binary.compare("eb$$0e1fb409ba....cd21be....e8....803e......74..b4..ba....cd21eb..b4..ba....cd21b8....cd21")
+    ) {
         sOptions = "by WOLVERiNE";
         bDetected = true;
-    } else if (Binary.compare("bc....5406b8....cd21891e....8c06....b8....ba....cd21b8....ba....cd21071eb9....ba....b7..b8....cd10")) {
+    } else if (
+        Binary.compare(
+            "bc....5406b8....cd21891e....8c06....b8....ba....cd21b8....ba....cd21071eb9....ba....b7..b8....cd10"
+        )
+    ) {
         sOptions = "by Randall Flagg of Razor 1911";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$b8....cd10ba....e8....ba....b8....cd2173..ba....e8....ba....e8....b44ccd2193ba....e8")) {
+    } else if (
+        Binary.compare("e9$$$$b8....cd10ba....e8....ba....b8....cd2173..ba....e8....ba....e8....b44ccd2193ba....e8")
+    ) {
         sOptions = "by Nostromo";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$ba....b409cd21c706........c706........c706........c706........be....33c98a0e....80f9..74..5651")) {
+    } else if (
+        Binary.compare(
+            "e9$$$$ba....b409cd21c706........c706........c706........c706........be....33c98a0e....80f9..74..5651"
+        )
+    ) {
         sName += " #1";
         sOptions = "by Drink Or Die (Dark Knight)";
         bDetected = true;
-    } else if (Binary.compare("e9$$$$ba....b409cd2133c0cd16b4..33dbcd10feccb2..cd10c706........c706........c706........c706")) {
+    } else if (
+        Binary.compare("e9$$$$ba....b409cd2133c0cd16b4..33dbcd10feccb2..cd10c706........c706........c706........c706")
+    ) {
         sName += " #2";
         sOptions = "by Dark Knight";
         bDetected = true;

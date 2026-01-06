@@ -4,7 +4,6 @@
 meta("compiler", "Rust");
 
 function detect() {
-
     //x86
     if (ELF.compareEP("f30f1efb31ed5e89e183e4..505452e8........81c3")) {
         bDetected = true;
@@ -15,25 +14,47 @@ function detect() {
     }
 
     //x86-64
-    if (ELF.compareEP("4831ed4889e7488d35........4883e4..e8$$$$$$$$488b37488d57..4531c94c8d05........488d0d........488d3d$$$$$$$$5541574156")) {
+    if (
+        ELF.compareEP(
+            "4831ed4889e7488d35........4883e4..e8$$$$$$$$488b37488d57..4531c94c8d05........488d0d........488d3d$$$$$$$$5541574156"
+        )
+    ) {
         bDetected = true;
-    } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156")) {
+    } else if (
+        ELF.compareEP(
+            "f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156"
+        )
+    ) {
         bDetected = true;
-    } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$4156")) {
+    } else if (
+        ELF.compareEP(
+            "f30f1efa31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$4156"
+        )
+    ) {
         bDetected = true;
-    } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156")) {
+    } else if (
+        ELF.compareEP(
+            "f30f1efa31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156"
+        )
+    ) {
         bDetected = true;
     } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$5541574156")) {
         bDetected = true;
     } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$41574156")) {
         bDetected = true;
-    } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$53")) {
+    } else if (
+        ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$53")
+    ) {
         bDetected = true;
     } else if (ELF.compareEP("f30f1efa31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$554889e541574156")) {
         bDetected = true;
     } else if (ELF.compareEP("31ed4989d15e4889e24883e4..50544531c031c9488d3d$$$$$$$$41574156")) {
         bDetected = true;
-    } else if (ELF.compareEP("31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156")) {
+    } else if (
+        ELF.compareEP(
+            "31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$504889f14863d7488d05$$$$$$$$5541574156"
+        )
+    ) {
         bDetected = true;
     } else if (ELF.compareEP("31ed4989d15e4889e24883e4..50544c8d05........488d0d........488d3d$$$$$$$$41574156")) {
         bDetected = true;

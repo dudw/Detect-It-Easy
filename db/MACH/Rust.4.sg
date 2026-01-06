@@ -4,7 +4,6 @@
 meta("compiler", "Rust");
 
 function detect() {
-
     //x86-64
     if (MACH.compareEP("554889e5415741564154534883ec..31ffbe........31c0e8........83f8")) {
         bDetected = true;

@@ -17,9 +17,8 @@ function detect() {
             var nOffset = 2;
             while (nOffset < X.Sz()) {
                 var wTag = X.U16(nOffset, _BE);
-                if (wTag >= 0xFFC0 && wTag <= 0xFFC3) {
-                    sOptions = X.U16(nOffset + 7, _BE) + "x" +
-                        X.U16(nOffset + 5, _BE);
+                if (wTag >= 0xffc0 && wTag <= 0xffc3) {
+                    sOptions = X.U16(nOffset + 7, _BE) + "x" + X.U16(nOffset + 5, _BE);
                     switch (X.U8(nOffset + 9)) {
                         case 1:
                             sOptions = sOptions.append("grey");

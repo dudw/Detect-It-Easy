@@ -10,9 +10,7 @@ const detect = main;
 
 function main() {
     if (Binary.isHeuristicScan()) {
-
-        const
-            currentFileExtension = Binary.getFileSuffix().toLowerCase(),
+        const currentFileExtension = Binary.getFileSuffix().toLowerCase(),
             isBinaryFile = !Binary.isPlainText(),
             extensionsDb = [
                 { ext: ["cmd", "bat"], type: "language", name: "Batch", bin: false },
@@ -264,7 +262,7 @@ function main() {
                 // 3DS formats:
                 { ext: ["cia"], type: "format", name: "CTR Importable Archive", bin: true },
                 // Amiga formats:
-                { ext: ["adf"], type: "format", name: "Amiga Disk File", bin: true },
+                { ext: ["adf"], type: "format", name: "Amiga Disk File", bin: true }
             ];
 
         for (var i = 0; i < extensionsDb.length; i++) {

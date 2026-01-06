@@ -7,7 +7,7 @@ function detect() {
         sName = Image.getFileFormatName();
         sVersion = Image.getFileFormatVersion();
         sOptions = Image.getFileFormatOptions();
-        
+
         if (sName) {
             bDetected = true;
         }

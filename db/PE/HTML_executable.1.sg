@@ -8,7 +8,9 @@ function detect() {
         if (PE.compareOverlay("'GHE32'")) {
             bDetected = true;
         }
-    } else if (PE.compareEP("558becb9........6a..6a..4975..535657b8........e8$$$$$$$$538bd833c0a3........6a..e8........a3")) {
+    } else if (
+        PE.compareEP("558becb9........6a..6a..4975..535657b8........e8$$$$$$$$538bd833c0a3........6a..e8........a3")
+    ) {
         if (PE.compareOverlay("'HEEG'")) {
             bDetected = true;
         }

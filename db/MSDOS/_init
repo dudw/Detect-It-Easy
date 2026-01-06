@@ -14,7 +14,7 @@ MSDOS.getBaseOffset = function (nOffset) {
         nOffset = 0;
     }
     return (MSDOS.readWord(8) << 4) + nOffset;
-}
+};
 
 /**
  * Translate segment/offset address pair to file offset.
@@ -27,11 +27,13 @@ MSDOS.addressToOffset = function (nSegment, nOffset) {
         nOffset = 0;
     }
     nOffset += nSegment << 4;
-    return MSDOS.getBaseOffset(nOffset & 0xFFFFF);
-}
+    return MSDOS.getBaseOffset(nOffset & 0xfffff);
+};
 
 // Backward compatibility alias
-MSDOS.AddressToOffset = function () { MSDOS.addressToOffset.apply(this, arguments); }
+MSDOS.AddressToOffset = function () {
+    MSDOS.addressToOffset.apply(this, arguments);
+};
 
 /**
  * Get the entry point file offset.
@@ -43,7 +45,7 @@ MSDOS.getEntryPointOffset = function (nOffset) {
         nOffset = 0;
     }
     return MSDOS.addressToOffset(MSDOS.readWord(0x16), MSDOS.readWord(0x14)) + nOffset;
-}
+};
 
 /**
  * Get the NewExe (or LE/LX) file offset (assuming it's valid).
@@ -54,5 +56,5 @@ MSDOS.getNEOffset = function (nOffset) {
     if (arguments.length == 0) {
         nOffset = 0;
     }
-    return MSDOS.readDword(0x3C) + nOffset;
-}
+    return MSDOS.readDword(0x3c) + nOffset;
+};

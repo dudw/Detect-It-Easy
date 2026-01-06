@@ -9,15 +9,16 @@
 meta("packer", "AlushPacker");
 
 function detect() {
-    if (PE.getNumberOfImports() > 2 &&
+    if (
+        PE.getNumberOfImports() > 2 &&
         PE.isRichSignaturePresent() &&
-        PE.isLibraryPresentExp(/vcruntime140/i) && (
-            PE.getImportFunctionName(0, 0) === "VirtualProtect" &&
-            PE.getImportFunctionName(0, 1) === "GetCurrentProcess" &&
-            PE.getImportFunctionName(0, 2) === "GetModuleHandleA" &&
-            PE.getImportFunctionName(0, 3) === "MultiByteToWideChar" &&
-            PE.getImportFunctionName(0, 4) === "FlushInstructionCache"
-        )) {
+        PE.isLibraryPresentExp(/vcruntime140/i) &&
+        PE.getImportFunctionName(0, 0) === "VirtualProtect" &&
+        PE.getImportFunctionName(0, 1) === "GetCurrentProcess" &&
+        PE.getImportFunctionName(0, 2) === "GetModuleHandleA" &&
+        PE.getImportFunctionName(0, 3) === "MultiByteToWideChar" &&
+        PE.getImportFunctionName(0, 4) === "FlushInstructionCache"
+    ) {
         var packedLatestSection = PE.section[".packed"];
 
         if (!packedLatestSection) {
@@ -28,7 +29,6 @@ function detect() {
         if (PE.compare("00 ** ?? 00", packedLatestSection.FileOffset)) {
             bDetected = true;
         }
-
     }
 
     return result();

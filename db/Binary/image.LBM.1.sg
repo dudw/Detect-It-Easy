@@ -8,7 +8,7 @@ function detect() {
     if (File.compare("'FORM'") && (File.compare("'ILBM'", 8) || File.compare("'PBM '", 8))) {
         sz = File.read_uint32(4, _BE) + 8;
         if (File.getSize() < sz) sVersion = "malformed!short";
-        p = 0x0C;
+        p = 0x0c;
         end = Math.min(File.getSize(), sz);
         w = viewportMode = hsx = -1;
         while (p < end) {
@@ -23,10 +23,10 @@ function detect() {
                     y0 = File.read_int16(p + 6, _BE);
                     numPlanes = File.read_uint8(p + 8);
                     mask = File.read_uint8(p + 9);
-                    co = File.read_uint8(p + 0xA);
-                    tcol = File.read_uint16(p + 0xC);
-                    xa = File.read_uint8(p + 0xE);
-                    ya = File.read_uint8(p + 0xF);
+                    co = File.read_uint8(p + 0xa);
+                    tcol = File.read_uint16(p + 0xc);
+                    xa = File.read_uint8(p + 0xe);
+                    ya = File.read_uint8(p + 0xf);
                     pw = File.read_int16(p + 0x10, _BE);
                     ph = File.read_int16(p + 0x12, _BE);
                     break;
@@ -56,11 +56,11 @@ function detect() {
                     sOption("vertical RLE");
                     break;
                 default:
-                    sOption("unk.compression")
+                    sOption("unk.compression");
             }
             if (mask >= 2) sOption("t.col:" + Hex(tcol));
             if (viewportMode >= 0) sOption(Hex(viewportMode), "view_port_mode:");
-            if (hsx >= 0) sOption("hotspot: (" + hsx + "," + hsy + ")")
+            if (hsx >= 0) sOption("hotspot: (" + hsx + "," + hsy + ")");
         }
         bDetected = true;
     }

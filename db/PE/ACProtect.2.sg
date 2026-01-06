@@ -18,7 +18,7 @@ function detect() {
     } else {
         var perplexSection = PE.section[".perplex"];
 
-        if (perplexSection && (perplexSection.Characteristics & 0xe0000060)) {
+        if (perplexSection && perplexSection.Characteristics & 0xe0000060) {
             sVersion = "1.X";
         }
     }

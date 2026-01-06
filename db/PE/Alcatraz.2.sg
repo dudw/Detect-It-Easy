@@ -5,7 +5,8 @@
 meta("protector", "Alcatraz");
 
 function detect() {
-    if (PE.isSectionNamePresent(".0Dev")) { // need more samples
+    if (PE.isSectionNamePresent(".0Dev")) {
+        // need more samples
         bDetected = true;
     }
 

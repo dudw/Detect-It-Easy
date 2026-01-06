@@ -8,7 +8,12 @@ function isPatchedUPX() {
         nNumberOfFunctions = PE.getNumberOfImportThunks(0);
 
     if (nNumberOfFunctions > 1 && nNumberOfFunctions < 7) {
-        if (PE.getSizeOfCode() && PE.getSizeOfUninitializedData() && PE.section.length > 2 && PE.section[0].FileSize == 0) {
+        if (
+            PE.getSizeOfCode() &&
+            PE.getSizeOfUninitializedData() &&
+            PE.section.length > 2 &&
+            PE.section[0].FileSize == 0
+        ) {
             var funcCounter = 0;
 
             if (PE.getImportFunctionName(0, 0) == "LoadLibraryA") {
@@ -57,10 +62,12 @@ function isPatchedUPX() {
                 }
             }
 
-            if (funcCounter == 2 && nNumberOfFunctions == 2 ||
-                funcCounter == 3 && nNumberOfFunctions >= 3 ||
-                funcCounter == 4 && nNumberOfFunctions == 4 ||
-                funcCounter == 6 && nNumberOfFunctions == 6) {
+            if (
+                (funcCounter == 2 && nNumberOfFunctions == 2) ||
+                (funcCounter == 3 && nNumberOfFunctions >= 3) ||
+                (funcCounter == 4 && nNumberOfFunctions == 4) ||
+                (funcCounter == 6 && nNumberOfFunctions == 6)
+            ) {
                 isDetected = true;
             }
 
@@ -81,15 +88,26 @@ function getUPXOptions(nOffset) {
         nLevel = PE.readByte(nOffset + 3),
         sCompression = "";
 
-    switch (nMethod) // From http://sourceforge.net/p/upx/code/ci/default/tree/src/conf.h
-    {
-        case 2: case 3:
-        case 4: case 5:
-        case 6: case 7:
-        case 8: case 9:
-        case 10: sCompression = "NRV"; break;
-        case 14: sCompression = "LZMA"; break;
-        case 15: sCompression = "zlib"; break;
+    switch (
+        nMethod // From http://sourceforge.net/p/upx/code/ci/default/tree/src/conf.h
+    ) {
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+            sCompression = "NRV";
+            break;
+        case 14:
+            sCompression = "LZMA";
+            break;
+        case 15:
+            sCompression = "zlib";
+            break;
     }
 
     if (sCompression) {

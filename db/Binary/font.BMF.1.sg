@@ -34,11 +34,18 @@ function detect() {
                     nOffset += 4;
                     switch (nBlockTypeIdentifier) {
                         case 1:
-                            sOptionT('"' + Binary.getString(nOffset + 0xE) + '"');
+                            sOptionT('"' + Binary.getString(nOffset + 0xe) + '"');
                             sOptionT("Size:" + Binary.read_int16(nOffset)); // fontSize
                             break;
                         case 2:
-                            sOptionT("pages:" + Binary.read_int16(nOffset + 4) + "x" + Binary.read_int16(nOffset + 6) + "x" + Binary.read_int16(nOffset + 8)); // scaleW, scaleH, pages
+                            sOptionT(
+                                "pages:" +
+                                    Binary.read_int16(nOffset + 4) +
+                                    "x" +
+                                    Binary.read_int16(nOffset + 6) +
+                                    "x" +
+                                    Binary.read_int16(nOffset + 8)
+                            ); // scaleW, scaleH, pages
                             break;
                         case 3:
                             break;
@@ -52,10 +59,15 @@ function detect() {
                     nOffset += nBlockSize;
                 }
             }
-        } else if (Binary.isPlainText() && Binary.find_utf8String(0, 200, "info face") >= 0 && Binary.find_utf8String(0, 200, "stretchH") >= 0) {
+        } else if (
+            Binary.isPlainText() &&
+            Binary.find_utf8String(0, 200, "info face") >= 0 &&
+            Binary.find_utf8String(0, 200, "stretchH") >= 0
+        ) {
             bDetected = true;
-            if (Binary.find_utf8String(0, 200, "<?xml") >= 0) { sOptionT("XML") } else
-                (sOptionT("Text"))
+            if (Binary.find_utf8String(0, 200, "<?xml") >= 0) {
+                sOptionT("XML");
+            } else sOptionT("Text");
         }
     }
 

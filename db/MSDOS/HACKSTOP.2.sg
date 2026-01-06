@@ -31,7 +31,9 @@ function detect() {
     } else if (MSDOS.compareEP("52B8....1ECD2186E03D....73..CD200E1FB409E8....24..EA")) {
         sVersion = "1.13";
         bDetected = true;
-    } else if (MSDOS.compareEP("FABE....050C00071D4A461E16FDAC44........F16D84D33D....CFAFFB34DB33..........D0D6....92B4249E")) {
+    } else if (
+        MSDOS.compareEP("FABE....050C00071D4A461E16FDAC44........F16D84D33D....CFAFFB34DB33..........D0D6....92B4249E")
+    ) {
         sVersion = "1.17";
         bDetected = true;
     } else if (MSDOS.compareEP("52BA....5AEB..9A........30CD21......FD02....CD200E1F52BA....5AEB")) {

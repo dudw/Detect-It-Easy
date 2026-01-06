@@ -26,7 +26,9 @@ function detect() {
         sVersion = "1.6";
     } else if (PE.compareEP("6a..68........E8$$$$$$$$....81EC........53565783A5..........F3EB0C'eXPr-v.1.6.'")) {
         sVersion = "1.6";
-    } else if (PE.compareEP("6a..6a..6a..6a..68........E8$$$$$$$$....81EC........53565783A5..........F3EB0C'eXPr-v.1.6.'")) {
+    } else if (
+        PE.compareEP("6a..6a..6a..6a..68........E8$$$$$$$$....81EC........53565783A5..........F3EB0C'eXPr-v.1.6.'")
+    ) {
         sVersion = "1.6";
     } else if (PE.compareEP("EB0168EB01........83EC0C535657EB01..833D........007408EB01E9E956010000EB02")) {
         bDetected = true;

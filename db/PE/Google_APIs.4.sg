@@ -9,7 +9,11 @@
 meta("library", "Google APIs");
 
 function detect() {
-    if (PE.isNetObjectPresent("Google.Apis") || PE.isNetObjectPresent("Google.Apis.Auth") || PE.isNetObjectPresent("Google.Apis.Core")) {
+    if (
+        PE.isNetObjectPresent("Google.Apis") ||
+        PE.isNetObjectPresent("Google.Apis.Auth") ||
+        PE.isNetObjectPresent("Google.Apis.Core")
+    ) {
         bDetected = true;
     }
 

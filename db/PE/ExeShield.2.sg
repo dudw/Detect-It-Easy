@@ -9,7 +9,12 @@
 meta("protector", "ExeShield");
 
 function detect() {
-    if (PE.compareEP("E8040000008360EB0C5DEB05") && PE.compareOverlay("85c0") && PE.isRichSignaturePresent() && !PE.getNumberOfImports()) {
+    if (
+        PE.compareEP("E8040000008360EB0C5DEB05") &&
+        PE.compareOverlay("85c0") &&
+        PE.isRichSignaturePresent() &&
+        !PE.getNumberOfImports()
+    ) {
         bDetected = true;
 
         if (!PE.isSectionNamePresent(".shield")) {

@@ -9,7 +9,10 @@
 meta("protection", "obfus.h");
 
 function detect() {
-    if ((PE.section[".obfh"] || PE.isExportFunctionPresent("WhatSoundDoesACowMake")) && PE.isFunctionPresent("vsprintf"))
+    if (
+        (PE.section[".obfh"] || PE.isExportFunctionPresent("WhatSoundDoesACowMake")) &&
+        PE.isFunctionPresent("vsprintf")
+    )
         bDetected = true;
 
     sLang = "C";

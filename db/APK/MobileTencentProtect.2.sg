@@ -9,8 +9,7 @@ meta("protector", "MobileTencentProtect");
 
 function detect() {
     bDetected =
-        APK.isArchiveRecordPresent("lib/armeabi-v7a/mix.dex") ||
-        APK.isArchiveRecordPresent("lib/armeabi/mix.dex");
+        APK.isArchiveRecordPresent("lib/armeabi-v7a/mix.dex") || APK.isArchiveRecordPresent("lib/armeabi/mix.dex");
 
     return result();
 }

@@ -11,8 +11,7 @@ if (typeof aQt === "undefined" && typeof PE !== "undefined") {
     aQt = PE.isLibraryPresentExp(/^Qt(\d)?Core(d?)(\d)?/i);
     //special case - check own name
     if (!aQt) {
-        aQt = ownName.match(/^Qt(\d)?Core(d?)(\d)?/i)
-        if (aQt)
-            aQt[0] = ownName;
+        aQt = ownName.match(/^Qt(\d)?Core(d?)(\d)?/i);
+        if (aQt) aQt[0] = ownName;
     }
 }

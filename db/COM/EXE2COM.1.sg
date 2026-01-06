@@ -12,7 +12,11 @@ function detect() {
         sVersion = "1.0";
         sOptions = "by Microsoft";
         bDetected = true;
-    } else if (Binary.compare("b3..b9....33d2be....8bfeac32c3aa434932e403d0e3..eb..3b16....75..be....8bc6b1..d3e88cdb03c30344..a3....8cc805")) {
+    } else if (
+        Binary.compare(
+            "b3..b9....33d2be....8bfeac32c3aa434932e403d0e3..eb..3b16....75..be....8bc6b1..d3e88cdb03c30344..a3....8cc805"
+        )
+    ) {
         sOptions = "CRC check";
         bDetected = true;
     } else if (Binary.compare("e8$$$$bf....be....a5a48cda83c2..0116....81c2....8ed2bc....eb")) {
@@ -31,7 +35,9 @@ function detect() {
     } else if (Binary.compare("e9$$$$8cca81c2....3b16....76..ba....b409cd21cd20")) {
         sOptions = "generic, type 1";
         bDetected = true;
-    } else if (Binary.compare("be....8b043d....74..ba....b409cd21cd208bc6b1..d3e88cdb03c303....a3....8cc805....a3....8b44")) {
+    } else if (
+        Binary.compare("be....8b043d....74..ba....b409cd21cd208bc6b1..d3e88cdb03c303....a3....8cc805....a3....8b44")
+    ) {
         sOptions = "by RaskY";
         bDetected = true;
     } else if (Binary.compare("bf....be....b9....fcf3a4068ccb83c3..011e....011e....b9....8b54..03d381c2....8ec28b3c")) {
@@ -42,7 +48,9 @@ function detect() {
         sVersion = "1.0";
         sOptions = "by Milkov";
         bDetected = true;
-    } else if (Binary.compare("eb$$be....8bc6b1..d3e88cdb03c30344..89048cc805....8be88b44..b1..d3e803c50344..bb....8b1f")) {
+    } else if (
+        Binary.compare("eb$$be....8bc6b1..d3e88cdb03c30344..89048cc805....8be88b44..b1..d3e803c50344..bb....8b1f")
+    ) {
         sOptions = "by JauMing Tseng";
         bDetected = true;
     } else if (Binary.compare("e8$$$$bf....be....a5a48cda83c2..50b4..bb....cd21b9....ad970115e2")) {

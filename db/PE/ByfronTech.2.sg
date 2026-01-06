@@ -23,7 +23,8 @@ function detect() {
     // .byfron - custom RX section used by Byfron
     // .byfron1 - initialized, discardable data used by Byfron
 
-    const FLAGS_RX = 0x60000020, FLAGS_INITIALIZED_DATA_DISCARDABLE = 0x02000040;
+    const FLAGS_RX = 0x60000020,
+        FLAGS_INITIALIZED_DATA_DISCARDABLE = 0x02000040;
 
     for (var i = PE.nLastSection; i >= 0; i--) {
         var sectionName = PE.getSectionName(i),

@@ -5,7 +5,11 @@ meta("compiler", "Microsoft Visual C/C++");
 function detect() {
     if (PE.compareEP("8bff558bec837d....75..e8........ff75..8b4d..8b55..e8")) {
         sVersion = "2008-2010";
-    } else if (PE.compareEP("8bff558bec83ec..538b5d..83fb..75..5657e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc7")) {
+    } else if (
+        PE.compareEP(
+            "8bff558bec83ec..538b5d..83fb..75..5657e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc7"
+        )
+    ) {
         sVersion = "2010, 10";
     } else if (PE.compareEP("8bff558bec837d....0f84........ff75..ff75..e8........59595d")) {
         sVersion = "2010, 10 (30319, 40219)";
@@ -84,21 +88,31 @@ function detect() {
         sVersion = "2012";
     } else if (PE.compareEP("8bff558bec837d....74..8b55..51e8$$$$$$$$8bff558bec83ec..a1........33c58945..5633f657")) {
         sVersion = "2013, 12.1 (40116)";
-    } else if (PE.compareEP("558bec837d....75..e8$$$$$$$$558bec83ec..8365....8365....a1........5657bf........be........3bc7")) {
+    } else if (
+        PE.compareEP("558bec837d....75..e8$$$$$$$$558bec83ec..8365....8365....a1........5657bf........be........3bc7")
+    ) {
         sVersion = "2013";
     } else if (PE.compareEP("8bff558bec83ec..a1........33c58945..568b75..5783fe")) {
         sVersion = "2013";
     } else if (PE.compareEP("558bec837d....75..e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7bb")) {
         sVersion = "2005";
-    } else if (PE.compareEP("558bec837d....75..e8$$$$$$$$558bec83ec..a1........8365....8365....5657bf........be........3bc7")) {
+    } else if (
+        PE.compareEP("558bec837d....75..e8$$$$$$$$558bec83ec..a1........8365....8365....5657bf........be........3bc7")
+    ) {
         sVersion = "2012, update 4";
-    } else if (PE.compareEP("8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..a1........8365....8365....57bf........3bc7")) {
+    } else if (
+        PE.compareEP("8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..a1........8365....8365....57bf........3bc7")
+    ) {
         sVersion = "2005 (50727)";
     } else if (PE.compareEP("8b4424..83e8..74..4875..568b7424..56ff15")) {
         sVersion = "2005 (50727.1)";
     } else if (PE.compareEP("837c24....75..e8$$$$$$$$8bff558bec83ec..a1........85c0")) {
         sVersion = "2005 (50727)";
-    } else if (PE.compareEP("8bff56e8........85c07c..e8$$$$$$$$e8$$$$$$$$8bff558bec83ec..a1........8365....8365....57bf........3bc7")) {
+    } else if (
+        PE.compareEP(
+            "8bff56e8........85c07c..e8$$$$$$$$e8$$$$$$$$8bff558bec83ec..a1........8365....8365....57bf........3bc7"
+        )
+    ) {
         sVersion = "2005 (50727)";
     } else if (PE.compareEP("558bece8$$$$$$$$558bec83ec..c745..........c745..........813d")) {
         sVersion = "2005 (50727)";
@@ -118,17 +132,27 @@ function detect() {
         sVersion = "6.0 (8168-8797)";
     } else if (PE.compareEP("837c24....8b4424..a3........c705................75..e8........b8........c2")) {
         sVersion = "2008, SP1";
-    } else if (PE.compareEP("8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc7")) {
+    } else if (
+        PE.compareEP(
+            "8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..a1........8365....8365....5357bf........bb........3bc7"
+        )
+    ) {
         sVersion = "2008, SP1 (21022, 30729)";
     } else if (PE.compareEP("8bff558bec837d....0f84........ff75..8b4d..8b55..e8........595d")) {
         sVersion = "2008 (21022)";
-    } else if (PE.compareEP("837c24....0f84$$$$$$$$e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7")) {
+    } else if (
+        PE.compareEP("837c24....0f84$$$$$$$$e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7")
+    ) {
         sVersion = "2005";
     } else if (PE.compareEP("837c24....75..e8$$$$$$$$558bec83ec..a1........8365....8365....5357bf........3bc7")) {
         sVersion = "2005";
     } else if (PE.compareEP("e8$$$$$$$$558bec83ec..8365....8365....a1........5657bf........be........3bc7")) {
         sVersion = "2013-2017";
-    } else if (PE.compareEP("8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..8365....8365....a1........5657bf........be........3bc7")) {
+    } else if (
+        PE.compareEP(
+            "8bff558bec837d....75..e8$$$$$$$$8bff558bec83ec..8365....8365....a1........5657bf........be........3bc7"
+        )
+    ) {
         sVersion = "2017, 15.0 (24610)";
     } else if (PE.compareEP("e8$$$$$$$$8bff558bec83ec..8365....8365....a1........5657bf........be........3bc7")) {
         sVersion = "2017, 15.0";

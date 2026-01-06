@@ -5,7 +5,7 @@ meta("library", "QT");
 function getVersion() {
     var current = MACH.getLibraryCurrentVersion("QtCore");
 
-    return ((current >> 16) & 0xFF) + "." + ((current >> 8) & 0xFF) + "." + (current & 0xFF);
+    return ((current >> 16) & 0xff) + "." + ((current >> 8) & 0xff) + "." + (current & 0xff);
 }
 
 function detect() {

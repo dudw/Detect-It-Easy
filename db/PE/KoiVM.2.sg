@@ -5,10 +5,8 @@
 meta("protector", "KoiVM");
 
 function detect() {
-
     if (PE.isNet() && _getNumberOfResults("protector") <= 1) {
-        if (PE.isSignatureInSectionPresent(0, "'KoiVM'") ||
-            PE.isSignatureInSectionPresent(0, "'VMEntryRun'")) {
+        if (PE.isSignatureInSectionPresent(0, "'KoiVM'") || PE.isSignatureInSectionPresent(0, "'VMEntryRun'")) {
             bDetected = true;
         }
 

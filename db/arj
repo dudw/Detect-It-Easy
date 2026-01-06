@@ -22,36 +22,37 @@ function detect_ARJ(bFile, bShowOptions) {
         }
         if (bDetected && bShowOptions) {
             // Options
-            switch (File.readByte(nOffset + 7)) // Host OS
-            {
-                case (0):
+            switch (
+                File.readByte(nOffset + 7) // Host OS
+            ) {
+                case 0:
                     sOptions = sOptions.append("MS-DOS");
                     break;
-                case (1):
+                case 1:
                     sOptions = sOptions.append("PRIMOS");
                     break;
-                case (2):
+                case 2:
                     sOptions = sOptions.append("UNIX");
                     break;
-                case (3):
+                case 3:
                     sOptions = sOptions.append("AMIGA");
                     break;
-                case (4):
+                case 4:
                     sOptions = sOptions.append("MAC-OS");
                     break;
-                case (5):
+                case 5:
                     sOptions = sOptions.append("OS/2");
                     break;
-                case (6):
+                case 6:
                     sOptions = sOptions.append("APPLE GS");
                     break;
-                case (7):
+                case 7:
                     sOptions = sOptions.append("ATARI ST");
                     break;
-                case (8):
+                case 8:
                     sOptions = sOptions.append("NeXT");
                     break;
-                case (9):
+                case 9:
                     sOptions = sOptions.append("VAX VMS");
                     break;
             }
@@ -60,21 +61,22 @@ function detect_ARJ(bFile, bShowOptions) {
                 sOptions = sOptions.append("encrypted");
             }
 
-            switch (File.readByte(nOffset + 9)) // Compression method
-            {
-                case (0):
+            switch (
+                File.readByte(nOffset + 9) // Compression method
+            ) {
+                case 0:
                     sOptions = sOptions.append("stored");
                     break;
-                case (1):
+                case 1:
                     sOptions = sOptions.append("compressed most");
                     break;
-                case (2):
+                case 2:
                     sOptions = sOptions.append("compressed");
                     break;
-                case (3):
+                case 3:
                     sOptions = sOptions.append("compressed faster");
                     break;
-                case (4):
+                case 4:
                     sOptions = sOptions.append("compressed fastest");
                     break;
             }

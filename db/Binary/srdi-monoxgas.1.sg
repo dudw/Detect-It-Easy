@@ -13,10 +13,11 @@ function detect() {
 
         // Possible 64-bit sRDI
         // https://github.com/monoxgas/sRDI/blob/9fdd5c44383039519accd1e6bac4acd5a046a92c/Python/ShellcodeRDI.py#L76-L80
-        if (Binary.readDword(currentOffset) == 0xC8894959) {
+        if (Binary.readDword(currentOffset) == 0xc8894959) {
             sOptions = "AMD64";
             bDetected = true;
-        } else if (Binary.readDword(currentOffset) == 0xE5895558) { // Possible 32-bit sRDI
+        } else if (Binary.readDword(currentOffset) == 0xe5895558) {
+            // Possible 32-bit sRDI
             sOptions = "x86";
             bDetected = true;
         }

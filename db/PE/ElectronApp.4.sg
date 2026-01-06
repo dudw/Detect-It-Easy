@@ -7,9 +7,7 @@ meta("library", "Electron package");
 function detect() {
     var cpadInfoSection = PE.section["CPADinfo"];
 
-    if (cpadInfoSection &&
-        PE.isSectionNamePresent(".00cfg")) {
-
+    if (cpadInfoSection && PE.isSectionNamePresent(".00cfg")) {
         bDetected = PE.findString(cpadInfoSection.FileOffset, cpadInfoSection.FileSize, "daPC");
     }
 

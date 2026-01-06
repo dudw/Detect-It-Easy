@@ -64,7 +64,7 @@ var VersionHash = [
     ["5.1.281.111", "bb23baab", "78f44bee"],
     ["4.6.85.32", "35a37732", "ca4b83fd"],
     ["4.5.103.53", "15953e0e", "b217e70b"],
-    ["3.28.71.20", "26145e77", "fec9a40d"],
+    ["3.28.71.20", "26145e77", "fec9a40d"]
 ];
 
 function detect() {
@@ -73,14 +73,13 @@ function detect() {
             bDetected = true;
             for (i = 0; i < VersionHash.length; i++) {
                 if (Binary.compare(VersionHash[i][1], 0x04)) {
-                    sVersion = "v" + VersionHash[i][0] + " x86"
+                    sVersion = "v" + VersionHash[i][0] + " x86";
                 } else if (Binary.compare(VersionHash[i][2], 0x04)) {
-                    sVersion = "v" + VersionHash[i][0] + " x64"
-                };
+                    sVersion = "v" + VersionHash[i][0] + " x64";
+                }
             }
         }
     }
-
 
     sLang = "JavaScript";
 

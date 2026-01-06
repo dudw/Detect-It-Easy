@@ -9,9 +9,13 @@
 meta("protector", "ByteGuard");
 
 function detect() {
-    if (PE.isNet() && PE.isNetGlobalCctorPresent() && (PE.section[0].Name === ".text" || PE.isSectionNamePresent("UPX")) &&
+    if (
+        PE.isNet() &&
+        PE.isNetGlobalCctorPresent() &&
+        (PE.section[0].Name === ".text" || PE.isSectionNamePresent("UPX")) &&
         PE.isNetUStringPresent("C# version only supports level 1 and 3") &&
-        PE.compareOverlay("%% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %%")) {
+        PE.compareOverlay("%% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %%")
+    ) {
         bDetected = true;
     }
 

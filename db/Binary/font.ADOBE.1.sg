@@ -6,7 +6,7 @@
 meta("font");
 
 function detect() {
-    if (Binary.getSize() >= 0x0F) {
+    if (Binary.getSize() >= 0x0f) {
         if (Binary.compare("'StartFontMetrics '") && Binary.compare("'.'", 0x12)) {
             sName = "Adobe Font Metrics (.AFM)";
             sVersion = "v" + Binary.getString(0x11, 0x03);
@@ -25,9 +25,8 @@ function detect() {
             sName = "Adobe Printer Font Metrics (.PFM)";
             bDetected = true;
             if (Binary.isVerbose()) {
-                sOptions = Binary.getString(0x06, 0x3C);
+                sOptions = Binary.getString(0x06, 0x3c);
             }
-
         }
     }
 

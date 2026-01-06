@@ -29,7 +29,10 @@ function detectThemida() {
 }
 
 function detect() {
-    if (PE.is64() && PE.compareEP("4883EC085053E801000000CC584889C348FFC0482D........482D........4805........803BCC75..C60300")) {
+    if (
+        PE.is64() &&
+        PE.compareEP("4883EC085053E801000000CC584889C348FFC0482D........482D........4805........803BCC75..C60300")
+    ) {
         sVersion = "2.X";
     } else if (PE.isNet()) {
         if (PE.isSignatureInSectionPresent(0, "b8000000006011c0")) {
@@ -39,8 +42,12 @@ function detect() {
         }
     } else if (PE.compareEP("B8........600BC074..E8000000005805..0000008038E975")) {
         switch (PE.readByte(PE.getEntryPointOffset() + 9)) {
-            case 0x58: sVersion = "1.0.X.X-1.8.0.0"; break;
-            case 0x68: sVersion = "1.8.X-1.9.X"; break;
+            case 0x58:
+                sVersion = "1.0.X.X-1.8.0.0";
+                break;
+            case 0x68:
+                sVersion = "1.8.X-1.9.X";
+                break;
         }
         sOptions = "Compressed";
     } else if (PE.compareEP("558BEC83C4D860E8000000005A81EA........8BDAC745D8000000008B45D8408945D8817DD880000000")) {
@@ -51,7 +58,11 @@ function detect() {
         sOptions = "NoCompression SecureEngine";
     } else if (PE.compareEP("83EC045053E801000000CC588BD840")) {
         sVersion = "2.0.1.0-2.1.8.0";
-    } else if (PE.compareEP("51b9........85c974$$59e9$$$$$$$$83ec..5053............5889c3402d........2d........05........803b..75..c603..bb........68........68........5350")) {
+    } else if (
+        PE.compareEP(
+            "51b9........85c974$$59e9$$$$$$$$83ec..5053............5889c3402d........2d........05........803b..75..c603..bb........68........68........5350"
+        )
+    ) {
         sVersion = "2.0.1.0-2.1.8.0";
     } else if (PE.compareEP("83EC045053E801000000CC5889C3402D........2D........05........803BCC75..C60300")) {
         sVersion = "2.X";
@@ -75,7 +86,6 @@ function detect() {
             sVersion = sThemidaVersion;
         }
     }
-
 
     bDetected = bDetected || Boolean(sVersion) || Boolean(sOptions);
 

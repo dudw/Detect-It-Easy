@@ -7,21 +7,22 @@ includeScript("zlib");
 
 function detect() {
     var TrueTypeTags = [];
-    TrueTypeTags['BASE'] =
-        TrueTypeTags['cmap'] =
-        TrueTypeTags['DSIG'] =
-        TrueTypeTags['EBDT'] =
-        TrueTypeTags['Feat'] =
-        TrueTypeTags['FFTM'] =
-        TrueTypeTags['GDEF'] =
-        TrueTypeTags['GPOS'] =
-        TrueTypeTags['GSUB'] =
-        TrueTypeTags['LTSH'] =
-        TrueTypeTags['OS/2'] = 1;
+    TrueTypeTags["BASE"] =
+        TrueTypeTags["cmap"] =
+        TrueTypeTags["DSIG"] =
+        TrueTypeTags["EBDT"] =
+        TrueTypeTags["Feat"] =
+        TrueTypeTags["FFTM"] =
+        TrueTypeTags["GDEF"] =
+        TrueTypeTags["GPOS"] =
+        TrueTypeTags["GSUB"] =
+        TrueTypeTags["LTSH"] =
+        TrueTypeTags["OS/2"] =
+            1;
 
     if (Binary.compare("950412de00000000") || Binary.compare("de12049500000000")) {
         sName = "GNU Gettext Machine Object (.MO)";
-    } else if (TrueTypeTags[Binary.getString(0xC, 4)]) {
+    } else if (TrueTypeTags[Binary.getString(0xc, 4)]) {
         sName = "TrueType font (.TTF)";
     } else if (Binary.compare("f702018392c01c3b")) {
         sName = "Device Independent Document (.DVI)";
@@ -35,7 +36,10 @@ function detect() {
         sName = "Zinc Data (.DAT)";
     } else if (Binary.compare("00010000'Jet System DB  '00")) {
         sName = "Microsoft Access Workgroup Information (.MDW)";
-    } else if (Binary.compare("dca5..00..................00000000") || Binary.compare("eca5c100..................00000000")) {
+    } else if (
+        Binary.compare("dca5..00..................00000000") ||
+        Binary.compare("eca5c100..................00000000")
+    ) {
         sName = "Microsoft Word 2 document";
     } else if (Binary.compare("'OTTO'................'CFF '")) {
         sName = "OpenType - CFF compact font (.OTF)";
@@ -58,11 +62,15 @@ function detect() {
         sVersion = Binary.read_uint16(0x17);
     } else if (Binary.compare("89'FCP'0D0A1A0A")) {
         sName = "High-Logic FontCreator Project (.FCP)";
-        sVersion = Binary.read_uint16(0x08) + "." + Binary.read_uint16(0x0A);
-        detect_zlib(Binary, 0x14 + Binary.read_uint32(0x10) * 0x11 + 0x0C);
+        sVersion = Binary.read_uint16(0x08) + "." + Binary.read_uint16(0x0a);
+        detect_zlib(Binary, 0x14 + Binary.read_uint32(0x10) * 0x11 + 0x0c);
     } else if (Binary.compare("'XALZ'")) {
         sName = "Xamarin Compressed DLL";
-        sOptions = sOptions.append("LZ4 compression", "Index:" + Binary.read_uint32(0x4), "Original size:" + Binary.read_uint32(0x8))
+        sOptions = sOptions.append(
+            "LZ4 compression",
+            "Index:" + Binary.read_uint32(0x4),
+            "Original size:" + Binary.read_uint32(0x8)
+        );
     }
 
     bDetected = bDetected || Boolean(sName);

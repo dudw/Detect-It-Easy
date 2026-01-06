@@ -12,11 +12,20 @@ function detect() {
             if (Binary.isVerbose()) {
                 sOption(Binary.read_uint32(0x10, _BE) + "x" + Binary.read_uint32(0x14, _BE));
                 switch (File.read_uint8(0x18)) {
-                    case 8: sOption("Gray"); break;
-                    case 10: sOption("Color"); break;
-                    case 12: sOption("Gray Alpha"); break;
-                    case 14: sOption("Color Alpha"); break;
-                    default: return;
+                    case 8:
+                        sOption("Gray");
+                        break;
+                    case 10:
+                        sOption("Color");
+                        break;
+                    case 12:
+                        sOption("Gray Alpha");
+                        break;
+                    case 14:
+                        sOption("Color Alpha");
+                        break;
+                    default:
+                        return;
                 }
             }
         }

@@ -40,8 +40,7 @@ function detect_ACE(bFile) {
                 nOffset -= 3;
                 while (nOffset < File.getSize()) {
                     var nPacked = File.readDword(nOffset + 7);
-                    Archive.add(File.readDword(nOffset + 11), nPacked,
-                        File.readByte(nOffset + 19) & 16);
+                    Archive.add(File.readDword(nOffset + 11), nPacked, File.readByte(nOffset + 19) & 16);
                     nOffset += 0x23 + File.readWord(nOffset + 0x21) + nPacked;
                 }
                 sOptions = sOptions.append(Archive.contents());

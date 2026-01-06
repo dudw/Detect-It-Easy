@@ -3,7 +3,8 @@
 meta("protector", "Soft Defender");
 
 function detect() {
-    if (PE.compareEP("74$$74$$78$$68A2AF470159E8")) { // 07  1F  0F
+    if (PE.compareEP("74$$74$$78$$68A2AF470159E8")) {
+        // 07  1F  0F
         bDetected = true;
 
         if (PE.compareEP("BA010000", 72)) {

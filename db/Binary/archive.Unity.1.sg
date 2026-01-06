@@ -4,13 +4,13 @@
 meta("archive", "Unity");
 
 function detect() {
-    var nFileVer, sEngineVer, sMinPlayerVer
+    var nFileVer, sEngineVer, sMinPlayerVer;
     if (Binary.getSize() >= 0x07) {
         if (Binary.compare("'UnityFS'00")) {
             sName += "/UnityFS";
             nFileVer = Binary.read_uint32(0x8, _BE);
             sEngineVer = Binary.getString(0x12);
-            sMinPlayerVer = Binary.getString(0x0C);
+            sMinPlayerVer = Binary.getString(0x0c);
             if (sEngineVer && sMinPlayerVer) {
                 sVersion = sVersion.append("FileVer:" + nFileVer);
                 sVersion = sVersion.append("EngineVer:" + sEngineVer);
@@ -21,7 +21,7 @@ function detect() {
             sName += "/UnityRaw";
             nFileVer = Binary.read_uint32(0x9, _BE);
             sEngineVer = Binary.getString(0x13);
-            sMinPlayerVer = Binary.getString(0x0D);
+            sMinPlayerVer = Binary.getString(0x0d);
             if (sEngineVer && sMinPlayerVer) {
                 sVersion = sVersion.append("FileVer:" + nFileVer);
                 sVersion = sVersion.append("EngineVer:" + sEngineVer);
@@ -32,7 +32,7 @@ function detect() {
             sName += "/UnityWeb";
             nFileVer = Binary.read_uint32(0x9, _BE);
             sEngineVer = Binary.getString(0x13);
-            sMinPlayerVer = Binary.getString(0x0D);
+            sMinPlayerVer = Binary.getString(0x0d);
             if (sEngineVer && sMinPlayerVer) {
                 sVersion = sVersion.append("FileVer:" + nFileVer);
                 sVersion = sVersion.append("EngineVer:" + sEngineVer);

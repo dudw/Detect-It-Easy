@@ -15,17 +15,19 @@ function detect() {
 
         const kLib = "kernel32.dll";
 
-        if (validateNativeImports(
-            isPositive = true,
-            references = [
-                [kLib, "GetProcAddress"],
-                [kLib, "ExitProcess"],
-                [kLib, "GetModuleFileNameA"],
-                [kLib, "GetComputerNameA"],
-                [kLib, "VirtualAllocExNuma"],
-                ["shlwapi.dll", "PathFindFileNameA"]
-            ]
-        )) {
+        if (
+            validateNativeImports(
+                (isPositive = true),
+                (references = [
+                    [kLib, "GetProcAddress"],
+                    [kLib, "ExitProcess"],
+                    [kLib, "GetModuleFileNameA"],
+                    [kLib, "GetComputerNameA"],
+                    [kLib, "VirtualAllocExNuma"],
+                    ["shlwapi.dll", "PathFindFileNameA"]
+                ])
+            )
+        ) {
             bDetected = false;
         }
 
@@ -37,50 +39,57 @@ function detect() {
         // =========================
         const entryPoint = "E8??????006A00FF15A4????00C3";
 
-        if (PE.getNumberOfSections() != 3 ||
+        if (
+            PE.getNumberOfSections() != 3 ||
             !PE.compareEP(entryPoint) ||
-            !PE.isSectionNamePresent(".rsrc") || !PE.isSectionNamePresent(".idata") || !PE.isSectionNamePresent(".text") ||
+            !PE.isSectionNamePresent(".rsrc") ||
+            !PE.isSectionNamePresent(".idata") ||
+            !PE.isSectionNamePresent(".text") ||
             PE.findString(PE.section[".rsrc"].FileOffset, PE.section[".rsrc"].FileSize, "</assembly>") == -1 ||
             !(PE.getSectionVirtualSize(1) + PE.getSectionVirtualSize(2) < PE.getSectionVirtualSize(0)) ||
-            !PE.isSignatureInSectionPresent(1, "00'Shlwapi.dll'00")) { // validate imports with signature <[S]hlwapi.dll>
+            !PE.isSignatureInSectionPresent(1, "00'Shlwapi.dll'00")
+        ) {
+            // validate imports with signature <[S]hlwapi.dll>
             bDetected = false;
         }
 
-
-        sOptions += "RunPE"
+        sOptions += "RunPE";
     }
 
     if (PE.isNet()) {
         bDetected = true;
-        if (validateReferences(
-            isPositive = true,
-            references = [
-                "kernel32.dll", "LoadLibraryA", "GetProcAddress",
-                "System.Runtime.InteropServices",
-                "System.Runtime.CompilerServices",
-                "System.IO",
-                "System.Reflection",
-                "System.Resources",
-                "System.Collections.Generic",
-                "System.Core",
-                "System.Linq",
-                "IEnumerable`1", "<>c__DisplayClass1", "Func`2"
-            ],
-            section = 0
-        )) {
+        if (
+            validateReferences(
+                (isPositive = true),
+                (references = [
+                    "kernel32.dll",
+                    "LoadLibraryA",
+                    "GetProcAddress",
+                    "System.Runtime.InteropServices",
+                    "System.Runtime.CompilerServices",
+                    "System.IO",
+                    "System.Reflection",
+                    "System.Resources",
+                    "System.Collections.Generic",
+                    "System.Core",
+                    "System.Linq",
+                    "IEnumerable`1",
+                    "<>c__DisplayClass1",
+                    "Func`2"
+                ]),
+                (section = 0)
+            )
+        ) {
             bDetected = false;
         }
 
-        if (PE.isNetObjectPresent("BeginInvoke") ||
-            PE.isNetObjectPresent("EndInvoke")) {
-            sOptions += "Invoke"
+        if (PE.isNetObjectPresent("BeginInvoke") || PE.isNetObjectPresent("EndInvoke")) {
+            sOptions += "Invoke";
         }
-
     }
 
     sVersion = "4.0";
 }
-
 
 // validateReferences by DosX
 function validateReferences(isPositive, references, section) {
@@ -90,7 +99,8 @@ function validateReferences(isPositive, references, section) {
             if (!PE.isSignatureInSectionPresent(section, sign)) {
                 return true;
             }
-        } else { // negative
+        } else {
+            // negative
             if (PE.isSignatureInSectionPresent(section, sign)) {
                 return true;
             }
@@ -102,7 +112,8 @@ function validateReferences(isPositive, references, section) {
 }
 
 // and validateNativeImports by DosX also
-function validateNativeImports(isPositive, references) { // references[2]
+function validateNativeImports(isPositive, references) {
+    // references[2]
     for (var i = 0; i < references.length; i++) {
         var importSign = references[i],
             library = importSign[0],
@@ -111,7 +122,8 @@ function validateNativeImports(isPositive, references) { // references[2]
             if (!PE.isLibraryFunctionPresent(library, entry)) {
                 return true;
             }
-        } else { // negative
+        } else {
+            // negative
             if (PE.isLibraryFunctionPresent(library, entry)) {
                 return true;
             }

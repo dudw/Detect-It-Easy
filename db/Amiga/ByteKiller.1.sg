@@ -13,11 +13,11 @@ function detect() {
         bDetected = true;
     } else if (Amiga.compareEP("48e7fffe41fa....43f9........4df9........20182218d1c020102449d5c17a")) {
         sVersion = "3.0";
-        sOptions = "type 1"
+        sOptions = "type 1";
         bDetected = true;
     } else if (Amiga.compareEP("48e7fffe41fa....d1fc........4ed0")) {
         sVersion = "3.0";
-        sOptions = "type 2"
+        sOptions = "type 2";
         bDetected = true;
     } else if (Amiga.compareEP("48e7fffe1c3c....4bf9........41fa....2c78")) {
         sName += " Pro";
@@ -26,7 +26,7 @@ function detect() {
     } else if (Amiga.compareEP("48e7fffe1c3c....4bf9........13fc............4e714e7150f9........303c")) {
         sName += " Pro";
         sVersion = "1.0";
-        sOptions = "Killer"
+        sOptions = "Killer";
         bDetected = true;
     }
 

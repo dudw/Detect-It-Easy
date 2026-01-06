@@ -13,7 +13,6 @@ function detect() {
         const boxedAppSection = PE.section[".bxpck"];
 
         if (boxedAppSection && PE.getNumberOfSections() > 2) {
-
             const mainSection = PE.section[boxedAppSection.Number + 1];
 
             if (mainSection && mainSection.Name === ".main") {
@@ -26,7 +25,11 @@ function detect() {
             bDetected = true;
         }
 
-        if (bDetected && boxedAppSection && PE.isSignatureInSectionPresent(boxedAppSection.Number, "2000640065006D006F0020")) {
+        if (
+            bDetected &&
+            boxedAppSection &&
+            PE.isSignatureInSectionPresent(boxedAppSection.Number, "2000640065006D006F0020")
+        ) {
             sVersion = "demo";
         }
     }
