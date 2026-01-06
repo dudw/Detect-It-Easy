@@ -162,7 +162,8 @@ function detect() {
         else {
             sz = Hex(Math.max(m, p, appinfo, sortinfo)) + "+" + mhk;
             if (mhk === "code" && !X.c("4E75", X.Sz() - 2)) bad = bad.addIfNone("!noRTSatEoF");
-        } // PDB? PQA?
+        }
+    // PDB? PQA?
     else sz = Math.max(m, p) + "+" + mhk;
 
     sName = "Palm OS file (." + tp + ")";

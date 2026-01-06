@@ -172,7 +172,7 @@ function detect() {
         sVersion = "0.1";
         sOptions = "PENightMare 2 Beta";
     } else if (
-    /* else if (PE.compareEP("909090909090909090909090909090909090909090909090909090909090909090909090")) { // TODO Check
+        /* else if (PE.compareEP("909090909090909090909090909090909090909090909090909090909090909090909090")) { // TODO Check
         sVersion = "0.1";
         sOptions = "PENinja 1.31";
     } */

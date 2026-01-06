@@ -130,7 +130,7 @@ function detect() {
             sVersion = "5.X";
             bDetected = true;
         } else if (Binary.compare("'MPV*'")) {
-        /* else if(Binary.compare("'Rar!'"))
+            /* else if(Binary.compare("'Rar!'"))
         {
             sName="RAR archive";
             bDetected=1;

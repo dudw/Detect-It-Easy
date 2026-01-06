@@ -7044,7 +7044,8 @@ function detect() {
                                             break;
                                     } //switch
                                 }
-                            } //if no RLE sig:
+                            }
+                        //if no RLE sig:
                         else title = X.SC(p + o, hksz, "CP1252");
                         break;
                     case -1:
